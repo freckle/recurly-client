@@ -1,0 +1,8 @@
+module RecurlyClient.Types.GeneralLedgerAccountList where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data GeneralLedgerAccountList
+instance Show GeneralLedgerAccountList
+instance Eq GeneralLedgerAccountList
+instance Data.Aeson.FromJSON GeneralLedgerAccountList
+instance Data.Aeson.ToJSON GeneralLedgerAccountList

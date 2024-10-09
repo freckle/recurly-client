@@ -1,0 +1,8 @@
+module RecurlyClient.Types.ShippingAddressCreate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data ShippingAddressCreate
+instance Show ShippingAddressCreate
+instance Eq ShippingAddressCreate
+instance Data.Aeson.FromJSON ShippingAddressCreate
+instance Data.Aeson.ToJSON ShippingAddressCreate

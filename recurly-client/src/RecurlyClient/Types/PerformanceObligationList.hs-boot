@@ -1,0 +1,8 @@
+module RecurlyClient.Types.PerformanceObligationList where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data PerformanceObligationList
+instance Show PerformanceObligationList
+instance Eq PerformanceObligationList
+instance Data.Aeson.FromJSON PerformanceObligationList
+instance Data.Aeson.ToJSON PerformanceObligationList

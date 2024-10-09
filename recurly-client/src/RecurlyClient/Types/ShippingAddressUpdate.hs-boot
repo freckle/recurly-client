@@ -1,0 +1,8 @@
+module RecurlyClient.Types.ShippingAddressUpdate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data ShippingAddressUpdate
+instance Show ShippingAddressUpdate
+instance Eq ShippingAddressUpdate
+instance Data.Aeson.FromJSON ShippingAddressUpdate
+instance Data.Aeson.ToJSON ShippingAddressUpdate

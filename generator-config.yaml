@@ -1,0 +1,7 @@
+specification: ./spec.json
+outputDir: recurly-client
+packageName: recurly-client
+moduleName: RecurlyClient
+incremental: true
+doNotGenerateStackProject: true
+useDateTypesAsString: true

@@ -1,0 +1,8 @@
+module RecurlyClient.Types.SubscriptionShipping where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data SubscriptionShipping
+instance Show SubscriptionShipping
+instance Eq SubscriptionShipping
+instance Data.Aeson.FromJSON SubscriptionShipping
+instance Data.Aeson.ToJSON SubscriptionShipping

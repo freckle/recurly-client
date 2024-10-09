@@ -1,0 +1,13 @@
+module RecurlyClient.Types.ExternalTransaction where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data ExternalTransaction
+instance Show ExternalTransaction
+instance Eq ExternalTransaction
+instance Data.Aeson.FromJSON ExternalTransaction
+instance Data.Aeson.ToJSON ExternalTransaction
+data ExternalTransactionPayment_method
+instance Show ExternalTransactionPayment_method
+instance Eq ExternalTransactionPayment_method
+instance Data.Aeson.FromJSON ExternalTransactionPayment_method
+instance Data.Aeson.ToJSON ExternalTransactionPayment_method

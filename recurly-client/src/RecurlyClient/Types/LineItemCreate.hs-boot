@@ -1,0 +1,38 @@
+module RecurlyClient.Types.LineItemCreate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data LineItemCreate
+instance Show LineItemCreate
+instance Eq LineItemCreate
+instance Data.Aeson.FromJSON LineItemCreate
+instance Data.Aeson.ToJSON LineItemCreate
+data LineItemCreateCredit_reason_code
+instance Show LineItemCreateCredit_reason_code
+instance Eq LineItemCreateCredit_reason_code
+instance Data.Aeson.FromJSON LineItemCreateCredit_reason_code
+instance Data.Aeson.ToJSON LineItemCreateCredit_reason_code
+data LineItemCreateDestination_tax_address_source
+instance Show LineItemCreateDestination_tax_address_source
+instance Eq LineItemCreateDestination_tax_address_source
+instance Data.Aeson.FromJSON LineItemCreateDestination_tax_address_source
+instance Data.Aeson.ToJSON LineItemCreateDestination_tax_address_source
+data LineItemCreateOrigin
+instance Show LineItemCreateOrigin
+instance Eq LineItemCreateOrigin
+instance Data.Aeson.FromJSON LineItemCreateOrigin
+instance Data.Aeson.ToJSON LineItemCreateOrigin
+data LineItemCreateOrigin_tax_address_source
+instance Show LineItemCreateOrigin_tax_address_source
+instance Eq LineItemCreateOrigin_tax_address_source
+instance Data.Aeson.FromJSON LineItemCreateOrigin_tax_address_source
+instance Data.Aeson.ToJSON LineItemCreateOrigin_tax_address_source
+data LineItemCreateRevenue_schedule_type
+instance Show LineItemCreateRevenue_schedule_type
+instance Eq LineItemCreateRevenue_schedule_type
+instance Data.Aeson.FromJSON LineItemCreateRevenue_schedule_type
+instance Data.Aeson.ToJSON LineItemCreateRevenue_schedule_type
+data LineItemCreateType
+instance Show LineItemCreateType
+instance Eq LineItemCreateType
+instance Data.Aeson.FromJSON LineItemCreateType
+instance Data.Aeson.ToJSON LineItemCreateType

@@ -1,0 +1,8 @@
+module RecurlyClient.Types.SubscriptionAddOnTier where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data SubscriptionAddOnTier
+instance Show SubscriptionAddOnTier
+instance Eq SubscriptionAddOnTier
+instance Data.Aeson.FromJSON SubscriptionAddOnTier
+instance Data.Aeson.ToJSON SubscriptionAddOnTier

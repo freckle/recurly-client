@@ -1,0 +1,13 @@
+module RecurlyClient.Types.ItemUpdate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data ItemUpdate
+instance Show ItemUpdate
+instance Eq ItemUpdate
+instance Data.Aeson.FromJSON ItemUpdate
+instance Data.Aeson.ToJSON ItemUpdate
+data ItemUpdateRevenue_schedule_type
+instance Show ItemUpdateRevenue_schedule_type
+instance Eq ItemUpdateRevenue_schedule_type
+instance Data.Aeson.FromJSON ItemUpdateRevenue_schedule_type
+instance Data.Aeson.ToJSON ItemUpdateRevenue_schedule_type

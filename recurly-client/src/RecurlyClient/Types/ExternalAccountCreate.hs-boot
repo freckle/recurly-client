@@ -1,0 +1,8 @@
+module RecurlyClient.Types.ExternalAccountCreate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data ExternalAccountCreate
+instance Show ExternalAccountCreate
+instance Eq ExternalAccountCreate
+instance Data.Aeson.FromJSON ExternalAccountCreate
+instance Data.Aeson.ToJSON ExternalAccountCreate

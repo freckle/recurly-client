@@ -1,0 +1,33 @@
+module RecurlyClient.Types.PaymentMethod where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data PaymentMethod
+instance Show PaymentMethod
+instance Eq PaymentMethod
+instance Data.Aeson.FromJSON PaymentMethod
+instance Data.Aeson.ToJSON PaymentMethod
+data PaymentMethodAccount_type
+instance Show PaymentMethodAccount_type
+instance Eq PaymentMethodAccount_type
+instance Data.Aeson.FromJSON PaymentMethodAccount_type
+instance Data.Aeson.ToJSON PaymentMethodAccount_type
+data PaymentMethodCard_network_preference
+instance Show PaymentMethodCard_network_preference
+instance Eq PaymentMethodCard_network_preference
+instance Data.Aeson.FromJSON PaymentMethodCard_network_preference
+instance Data.Aeson.ToJSON PaymentMethodCard_network_preference
+data PaymentMethodCard_type
+instance Show PaymentMethodCard_type
+instance Eq PaymentMethodCard_type
+instance Data.Aeson.FromJSON PaymentMethodCard_type
+instance Data.Aeson.ToJSON PaymentMethodCard_type
+data PaymentMethodGateway_attributes
+instance Show PaymentMethodGateway_attributes
+instance Eq PaymentMethodGateway_attributes
+instance Data.Aeson.FromJSON PaymentMethodGateway_attributes
+instance Data.Aeson.ToJSON PaymentMethodGateway_attributes
+data PaymentMethodObject
+instance Show PaymentMethodObject
+instance Eq PaymentMethodObject
+instance Data.Aeson.FromJSON PaymentMethodObject
+instance Data.Aeson.ToJSON PaymentMethodObject

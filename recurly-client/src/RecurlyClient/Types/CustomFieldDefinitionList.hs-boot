@@ -1,0 +1,8 @@
+module RecurlyClient.Types.CustomFieldDefinitionList where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data CustomFieldDefinitionList
+instance Show CustomFieldDefinitionList
+instance Eq CustomFieldDefinitionList
+instance Data.Aeson.FromJSON CustomFieldDefinitionList
+instance Data.Aeson.ToJSON CustomFieldDefinitionList

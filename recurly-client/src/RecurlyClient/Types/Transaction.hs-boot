@@ -1,0 +1,43 @@
+module RecurlyClient.Types.Transaction where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data Transaction
+instance Show Transaction
+instance Eq Transaction
+instance Data.Aeson.FromJSON Transaction
+instance Data.Aeson.ToJSON Transaction
+data TransactionAvs_check
+instance Show TransactionAvs_check
+instance Eq TransactionAvs_check
+instance Data.Aeson.FromJSON TransactionAvs_check
+instance Data.Aeson.ToJSON TransactionAvs_check
+data TransactionCollection_method
+instance Show TransactionCollection_method
+instance Eq TransactionCollection_method
+instance Data.Aeson.FromJSON TransactionCollection_method
+instance Data.Aeson.ToJSON TransactionCollection_method
+data TransactionCvv_check
+instance Show TransactionCvv_check
+instance Eq TransactionCvv_check
+instance Data.Aeson.FromJSON TransactionCvv_check
+instance Data.Aeson.ToJSON TransactionCvv_check
+data TransactionOrigin
+instance Show TransactionOrigin
+instance Eq TransactionOrigin
+instance Data.Aeson.FromJSON TransactionOrigin
+instance Data.Aeson.ToJSON TransactionOrigin
+data TransactionPayment_gateway
+instance Show TransactionPayment_gateway
+instance Eq TransactionPayment_gateway
+instance Data.Aeson.FromJSON TransactionPayment_gateway
+instance Data.Aeson.ToJSON TransactionPayment_gateway
+data TransactionStatus
+instance Show TransactionStatus
+instance Eq TransactionStatus
+instance Data.Aeson.FromJSON TransactionStatus
+instance Data.Aeson.ToJSON TransactionStatus
+data TransactionType
+instance Show TransactionType
+instance Eq TransactionType
+instance Data.Aeson.FromJSON TransactionType
+instance Data.Aeson.ToJSON TransactionType

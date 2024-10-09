@@ -1,0 +1,8 @@
+module RecurlyClient.Types.SubscriptionRampInterval where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data SubscriptionRampInterval
+instance Show SubscriptionRampInterval
+instance Eq SubscriptionRampInterval
+instance Data.Aeson.FromJSON SubscriptionRampInterval
+instance Data.Aeson.ToJSON SubscriptionRampInterval

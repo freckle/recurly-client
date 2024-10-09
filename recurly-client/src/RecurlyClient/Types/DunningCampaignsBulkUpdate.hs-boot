@@ -1,0 +1,8 @@
+module RecurlyClient.Types.DunningCampaignsBulkUpdate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data DunningCampaignsBulkUpdate
+instance Show DunningCampaignsBulkUpdate
+instance Eq DunningCampaignsBulkUpdate
+instance Data.Aeson.FromJSON DunningCampaignsBulkUpdate
+instance Data.Aeson.ToJSON DunningCampaignsBulkUpdate

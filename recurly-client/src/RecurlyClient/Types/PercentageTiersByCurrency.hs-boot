@@ -1,0 +1,8 @@
+module RecurlyClient.Types.PercentageTiersByCurrency where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data PercentageTiersByCurrency
+instance Show PercentageTiersByCurrency
+instance Eq PercentageTiersByCurrency
+instance Data.Aeson.FromJSON PercentageTiersByCurrency
+instance Data.Aeson.ToJSON PercentageTiersByCurrency
