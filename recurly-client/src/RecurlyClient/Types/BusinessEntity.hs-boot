@@ -1,0 +1,18 @@
+module RecurlyClient.Types.BusinessEntity where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data BusinessEntity
+instance Show BusinessEntity
+instance Eq BusinessEntity
+instance Data.Aeson.FromJSON BusinessEntity
+instance Data.Aeson.ToJSON BusinessEntity
+data BusinessEntityDestination_tax_address_source
+instance Show BusinessEntityDestination_tax_address_source
+instance Eq BusinessEntityDestination_tax_address_source
+instance Data.Aeson.FromJSON BusinessEntityDestination_tax_address_source
+instance Data.Aeson.ToJSON BusinessEntityDestination_tax_address_source
+data BusinessEntityOrigin_tax_address_source
+instance Show BusinessEntityOrigin_tax_address_source
+instance Eq BusinessEntityOrigin_tax_address_source
+instance Data.Aeson.FromJSON BusinessEntityOrigin_tax_address_source
+instance Data.Aeson.ToJSON BusinessEntityOrigin_tax_address_source

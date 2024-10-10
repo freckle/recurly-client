@@ -1,0 +1,8 @@
+module RecurlyClient.Types.UniqueCouponCodeList where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data UniqueCouponCodeList
+instance Show UniqueCouponCodeList
+instance Eq UniqueCouponCodeList
+instance Data.Aeson.FromJSON UniqueCouponCodeList
+instance Data.Aeson.ToJSON UniqueCouponCodeList

@@ -1,0 +1,13 @@
+module RecurlyClient.Types.Settings where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data Settings
+instance Show Settings
+instance Eq Settings
+instance Data.Aeson.FromJSON Settings
+instance Data.Aeson.ToJSON Settings
+data SettingsBilling_address_requirement
+instance Show SettingsBilling_address_requirement
+instance Eq SettingsBilling_address_requirement
+instance Data.Aeson.FromJSON SettingsBilling_address_requirement
+instance Data.Aeson.ToJSON SettingsBilling_address_requirement

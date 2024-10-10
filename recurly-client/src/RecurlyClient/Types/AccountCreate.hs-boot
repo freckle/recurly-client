@@ -1,0 +1,23 @@
+module RecurlyClient.Types.AccountCreate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data AccountCreate
+instance Show AccountCreate
+instance Eq AccountCreate
+instance Data.Aeson.FromJSON AccountCreate
+instance Data.Aeson.ToJSON AccountCreate
+data AccountCreateBill_to
+instance Show AccountCreateBill_to
+instance Eq AccountCreateBill_to
+instance Data.Aeson.FromJSON AccountCreateBill_to
+instance Data.Aeson.ToJSON AccountCreateBill_to
+data AccountCreatePreferred_locale
+instance Show AccountCreatePreferred_locale
+instance Eq AccountCreatePreferred_locale
+instance Data.Aeson.FromJSON AccountCreatePreferred_locale
+instance Data.Aeson.ToJSON AccountCreatePreferred_locale
+data AccountCreateTransaction_type
+instance Show AccountCreateTransaction_type
+instance Eq AccountCreateTransaction_type
+instance Data.Aeson.FromJSON AccountCreateTransaction_type
+instance Data.Aeson.ToJSON AccountCreateTransaction_type

@@ -1,0 +1,18 @@
+module RecurlyClient.Types.ProrationSettings where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data ProrationSettings
+instance Show ProrationSettings
+instance Eq ProrationSettings
+instance Data.Aeson.FromJSON ProrationSettings
+instance Data.Aeson.ToJSON ProrationSettings
+data ProrationSettingsCharge
+instance Show ProrationSettingsCharge
+instance Eq ProrationSettingsCharge
+instance Data.Aeson.FromJSON ProrationSettingsCharge
+instance Data.Aeson.ToJSON ProrationSettingsCharge
+data ProrationSettingsCredit
+instance Show ProrationSettingsCredit
+instance Eq ProrationSettingsCredit
+instance Data.Aeson.FromJSON ProrationSettingsCredit
+instance Data.Aeson.ToJSON ProrationSettingsCredit

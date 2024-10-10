@@ -1,0 +1,23 @@
+module RecurlyClient.Types.PlanUpdate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data PlanUpdate
+instance Show PlanUpdate
+instance Eq PlanUpdate
+instance Data.Aeson.FromJSON PlanUpdate
+instance Data.Aeson.ToJSON PlanUpdate
+data PlanUpdateRevenue_schedule_type
+instance Show PlanUpdateRevenue_schedule_type
+instance Eq PlanUpdateRevenue_schedule_type
+instance Data.Aeson.FromJSON PlanUpdateRevenue_schedule_type
+instance Data.Aeson.ToJSON PlanUpdateRevenue_schedule_type
+data PlanUpdateSetup_fee_revenue_schedule_type
+instance Show PlanUpdateSetup_fee_revenue_schedule_type
+instance Eq PlanUpdateSetup_fee_revenue_schedule_type
+instance Data.Aeson.FromJSON PlanUpdateSetup_fee_revenue_schedule_type
+instance Data.Aeson.ToJSON PlanUpdateSetup_fee_revenue_schedule_type
+data PlanUpdateTrial_unit
+instance Show PlanUpdateTrial_unit
+instance Eq PlanUpdateTrial_unit
+instance Data.Aeson.FromJSON PlanUpdateTrial_unit
+instance Data.Aeson.ToJSON PlanUpdateTrial_unit

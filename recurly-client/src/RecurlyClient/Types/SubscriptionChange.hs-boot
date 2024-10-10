@@ -1,0 +1,13 @@
+module RecurlyClient.Types.SubscriptionChange where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data SubscriptionChange
+instance Show SubscriptionChange
+instance Eq SubscriptionChange
+instance Data.Aeson.FromJSON SubscriptionChange
+instance Data.Aeson.ToJSON SubscriptionChange
+data SubscriptionChangeRevenue_schedule_type
+instance Show SubscriptionChangeRevenue_schedule_type
+instance Eq SubscriptionChangeRevenue_schedule_type
+instance Data.Aeson.FromJSON SubscriptionChangeRevenue_schedule_type
+instance Data.Aeson.ToJSON SubscriptionChangeRevenue_schedule_type

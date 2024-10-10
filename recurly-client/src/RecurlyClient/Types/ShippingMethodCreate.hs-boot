@@ -1,0 +1,8 @@
+module RecurlyClient.Types.ShippingMethodCreate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data ShippingMethodCreate
+instance Show ShippingMethodCreate
+instance Eq ShippingMethodCreate
+instance Data.Aeson.FromJSON ShippingMethodCreate
+instance Data.Aeson.ToJSON ShippingMethodCreate

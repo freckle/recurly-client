@@ -1,0 +1,18 @@
+module RecurlyClient.Types.CustomFieldDefinition where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data CustomFieldDefinition
+instance Show CustomFieldDefinition
+instance Eq CustomFieldDefinition
+instance Data.Aeson.FromJSON CustomFieldDefinition
+instance Data.Aeson.ToJSON CustomFieldDefinition
+data CustomFieldDefinitionRelated_type
+instance Show CustomFieldDefinitionRelated_type
+instance Eq CustomFieldDefinitionRelated_type
+instance Data.Aeson.FromJSON CustomFieldDefinitionRelated_type
+instance Data.Aeson.ToJSON CustomFieldDefinitionRelated_type
+data CustomFieldDefinitionUser_access
+instance Show CustomFieldDefinitionUser_access
+instance Eq CustomFieldDefinitionUser_access
+instance Data.Aeson.FromJSON CustomFieldDefinitionUser_access
+instance Data.Aeson.ToJSON CustomFieldDefinitionUser_access

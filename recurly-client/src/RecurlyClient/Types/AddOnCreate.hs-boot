@@ -1,0 +1,38 @@
+module RecurlyClient.Types.AddOnCreate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data AddOnCreate
+instance Show AddOnCreate
+instance Eq AddOnCreate
+instance Data.Aeson.FromJSON AddOnCreate
+instance Data.Aeson.ToJSON AddOnCreate
+data AddOnCreateAdd_on_type
+instance Show AddOnCreateAdd_on_type
+instance Eq AddOnCreateAdd_on_type
+instance Data.Aeson.FromJSON AddOnCreateAdd_on_type
+instance Data.Aeson.ToJSON AddOnCreateAdd_on_type
+data AddOnCreateRevenue_schedule_type
+instance Show AddOnCreateRevenue_schedule_type
+instance Eq AddOnCreateRevenue_schedule_type
+instance Data.Aeson.FromJSON AddOnCreateRevenue_schedule_type
+instance Data.Aeson.ToJSON AddOnCreateRevenue_schedule_type
+data AddOnCreateTier_type
+instance Show AddOnCreateTier_type
+instance Eq AddOnCreateTier_type
+instance Data.Aeson.FromJSON AddOnCreateTier_type
+instance Data.Aeson.ToJSON AddOnCreateTier_type
+data AddOnCreateUsage_calculation_type
+instance Show AddOnCreateUsage_calculation_type
+instance Eq AddOnCreateUsage_calculation_type
+instance Data.Aeson.FromJSON AddOnCreateUsage_calculation_type
+instance Data.Aeson.ToJSON AddOnCreateUsage_calculation_type
+data AddOnCreateUsage_timeframe
+instance Show AddOnCreateUsage_timeframe
+instance Eq AddOnCreateUsage_timeframe
+instance Data.Aeson.FromJSON AddOnCreateUsage_timeframe
+instance Data.Aeson.ToJSON AddOnCreateUsage_timeframe
+data AddOnCreateUsage_type
+instance Show AddOnCreateUsage_type
+instance Eq AddOnCreateUsage_type
+instance Data.Aeson.FromJSON AddOnCreateUsage_type
+instance Data.Aeson.ToJSON AddOnCreateUsage_type

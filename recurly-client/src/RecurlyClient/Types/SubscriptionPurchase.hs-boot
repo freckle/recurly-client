@@ -1,0 +1,13 @@
+module RecurlyClient.Types.SubscriptionPurchase where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data SubscriptionPurchase
+instance Show SubscriptionPurchase
+instance Eq SubscriptionPurchase
+instance Data.Aeson.FromJSON SubscriptionPurchase
+instance Data.Aeson.ToJSON SubscriptionPurchase
+data SubscriptionPurchaseRevenue_schedule_type
+instance Show SubscriptionPurchaseRevenue_schedule_type
+instance Eq SubscriptionPurchaseRevenue_schedule_type
+instance Data.Aeson.FromJSON SubscriptionPurchaseRevenue_schedule_type
+instance Data.Aeson.ToJSON SubscriptionPurchaseRevenue_schedule_type

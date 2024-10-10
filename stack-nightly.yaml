@@ -1,0 +1,4 @@
+resolver: 2024-10-09
+
+packages:
+  - recurly-client

@@ -1,0 +1,28 @@
+module RecurlyClient.Types.InvoiceRefund where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data InvoiceRefund
+instance Show InvoiceRefund
+instance Eq InvoiceRefund
+instance Data.Aeson.FromJSON InvoiceRefund
+instance Data.Aeson.ToJSON InvoiceRefund
+data InvoiceRefundExternal_refund
+instance Show InvoiceRefundExternal_refund
+instance Eq InvoiceRefundExternal_refund
+instance Data.Aeson.FromJSON InvoiceRefundExternal_refund
+instance Data.Aeson.ToJSON InvoiceRefundExternal_refund
+data InvoiceRefundExternal_refundPayment_method
+instance Show InvoiceRefundExternal_refundPayment_method
+instance Eq InvoiceRefundExternal_refundPayment_method
+instance Data.Aeson.FromJSON InvoiceRefundExternal_refundPayment_method
+instance Data.Aeson.ToJSON InvoiceRefundExternal_refundPayment_method
+data InvoiceRefundRefund_method
+instance Show InvoiceRefundRefund_method
+instance Eq InvoiceRefundRefund_method
+instance Data.Aeson.FromJSON InvoiceRefundRefund_method
+instance Data.Aeson.ToJSON InvoiceRefundRefund_method
+data InvoiceRefundType
+instance Show InvoiceRefundType
+instance Eq InvoiceRefundType
+instance Data.Aeson.FromJSON InvoiceRefundType
+instance Data.Aeson.ToJSON InvoiceRefundType

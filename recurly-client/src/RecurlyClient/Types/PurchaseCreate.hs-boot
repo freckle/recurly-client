@@ -1,0 +1,28 @@
+module RecurlyClient.Types.PurchaseCreate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data PurchaseCreate
+instance Show PurchaseCreate
+instance Eq PurchaseCreate
+instance Data.Aeson.FromJSON PurchaseCreate
+instance Data.Aeson.ToJSON PurchaseCreate
+data PurchaseCreateCollection_method
+instance Show PurchaseCreateCollection_method
+instance Eq PurchaseCreateCollection_method
+instance Data.Aeson.FromJSON PurchaseCreateCollection_method
+instance Data.Aeson.ToJSON PurchaseCreateCollection_method
+data PurchaseCreateNet_terms_type
+instance Show PurchaseCreateNet_terms_type
+instance Eq PurchaseCreateNet_terms_type
+instance Data.Aeson.FromJSON PurchaseCreateNet_terms_type
+instance Data.Aeson.ToJSON PurchaseCreateNet_terms_type
+data PurchaseCreateShipping
+instance Show PurchaseCreateShipping
+instance Eq PurchaseCreateShipping
+instance Data.Aeson.FromJSON PurchaseCreateShipping
+instance Data.Aeson.ToJSON PurchaseCreateShipping
+data PurchaseCreateTransaction_type
+instance Show PurchaseCreateTransaction_type
+instance Eq PurchaseCreateTransaction_type
+instance Data.Aeson.FromJSON PurchaseCreateTransaction_type
+instance Data.Aeson.ToJSON PurchaseCreateTransaction_type

@@ -1,0 +1,8 @@
+module RecurlyClient.Types.ExternalPaymentPhase where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data ExternalPaymentPhase
+instance Show ExternalPaymentPhase
+instance Eq ExternalPaymentPhase
+instance Data.Aeson.FromJSON ExternalPaymentPhase
+instance Data.Aeson.ToJSON ExternalPaymentPhase

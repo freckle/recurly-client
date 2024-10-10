@@ -1,0 +1,48 @@
+module RecurlyClient.Types.LineItem where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data LineItem
+instance Show LineItem
+instance Eq LineItem
+instance Data.Aeson.FromJSON LineItem
+instance Data.Aeson.ToJSON LineItem
+data LineItemCredit_reason_code
+instance Show LineItemCredit_reason_code
+instance Eq LineItemCredit_reason_code
+instance Data.Aeson.FromJSON LineItemCredit_reason_code
+instance Data.Aeson.ToJSON LineItemCredit_reason_code
+data LineItemDestination_tax_address_source
+instance Show LineItemDestination_tax_address_source
+instance Eq LineItemDestination_tax_address_source
+instance Data.Aeson.FromJSON LineItemDestination_tax_address_source
+instance Data.Aeson.ToJSON LineItemDestination_tax_address_source
+data LineItemLegacy_category
+instance Show LineItemLegacy_category
+instance Eq LineItemLegacy_category
+instance Data.Aeson.FromJSON LineItemLegacy_category
+instance Data.Aeson.ToJSON LineItemLegacy_category
+data LineItemOrigin
+instance Show LineItemOrigin
+instance Eq LineItemOrigin
+instance Data.Aeson.FromJSON LineItemOrigin
+instance Data.Aeson.ToJSON LineItemOrigin
+data LineItemOrigin_tax_address_source
+instance Show LineItemOrigin_tax_address_source
+instance Eq LineItemOrigin_tax_address_source
+instance Data.Aeson.FromJSON LineItemOrigin_tax_address_source
+instance Data.Aeson.ToJSON LineItemOrigin_tax_address_source
+data LineItemRevenue_schedule_type
+instance Show LineItemRevenue_schedule_type
+instance Eq LineItemRevenue_schedule_type
+instance Data.Aeson.FromJSON LineItemRevenue_schedule_type
+instance Data.Aeson.ToJSON LineItemRevenue_schedule_type
+data LineItemState
+instance Show LineItemState
+instance Eq LineItemState
+instance Data.Aeson.FromJSON LineItemState
+instance Data.Aeson.ToJSON LineItemState
+data LineItemType
+instance Show LineItemType
+instance Eq LineItemType
+instance Data.Aeson.FromJSON LineItemType
+instance Data.Aeson.ToJSON LineItemType

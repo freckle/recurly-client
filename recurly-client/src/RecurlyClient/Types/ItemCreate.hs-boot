@@ -1,0 +1,13 @@
+module RecurlyClient.Types.ItemCreate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data ItemCreate
+instance Show ItemCreate
+instance Eq ItemCreate
+instance Data.Aeson.FromJSON ItemCreate
+instance Data.Aeson.ToJSON ItemCreate
+data ItemCreateRevenue_schedule_type
+instance Show ItemCreateRevenue_schedule_type
+instance Eq ItemCreateRevenue_schedule_type
+instance Data.Aeson.FromJSON ItemCreateRevenue_schedule_type
+instance Data.Aeson.ToJSON ItemCreateRevenue_schedule_type

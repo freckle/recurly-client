@@ -1,0 +1,8 @@
+module RecurlyClient.Types.ExternalProductCreate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data ExternalProductCreate
+instance Show ExternalProductCreate
+instance Eq ExternalProductCreate
+instance Data.Aeson.FromJSON ExternalProductCreate
+instance Data.Aeson.ToJSON ExternalProductCreate

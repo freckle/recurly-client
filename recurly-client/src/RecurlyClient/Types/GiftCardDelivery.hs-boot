@@ -1,0 +1,13 @@
+module RecurlyClient.Types.GiftCardDelivery where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data GiftCardDelivery
+instance Show GiftCardDelivery
+instance Eq GiftCardDelivery
+instance Data.Aeson.FromJSON GiftCardDelivery
+instance Data.Aeson.ToJSON GiftCardDelivery
+data GiftCardDeliveryMethod
+instance Show GiftCardDeliveryMethod
+instance Eq GiftCardDeliveryMethod
+instance Data.Aeson.FromJSON GiftCardDeliveryMethod
+instance Data.Aeson.ToJSON GiftCardDeliveryMethod

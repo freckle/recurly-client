@@ -1,0 +1,8 @@
+module RecurlyClient.Types.CouponRedemptionCreate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data CouponRedemptionCreate
+instance Show CouponRedemptionCreate
+instance Eq CouponRedemptionCreate
+instance Data.Aeson.FromJSON CouponRedemptionCreate
+instance Data.Aeson.ToJSON CouponRedemptionCreate

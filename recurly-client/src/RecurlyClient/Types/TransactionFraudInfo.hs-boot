@@ -1,0 +1,13 @@
+module RecurlyClient.Types.TransactionFraudInfo where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data TransactionFraudInfo
+instance Show TransactionFraudInfo
+instance Eq TransactionFraudInfo
+instance Data.Aeson.FromJSON TransactionFraudInfo
+instance Data.Aeson.ToJSON TransactionFraudInfo
+data TransactionFraudInfoDecision
+instance Show TransactionFraudInfoDecision
+instance Eq TransactionFraudInfoDecision
+instance Data.Aeson.FromJSON TransactionFraudInfoDecision
+instance Data.Aeson.ToJSON TransactionFraudInfoDecision

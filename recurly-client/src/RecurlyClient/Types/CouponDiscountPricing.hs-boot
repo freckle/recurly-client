@@ -1,0 +1,8 @@
+module RecurlyClient.Types.CouponDiscountPricing where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data CouponDiscountPricing
+instance Show CouponDiscountPricing
+instance Eq CouponDiscountPricing
+instance Data.Aeson.FromJSON CouponDiscountPricing
+instance Data.Aeson.ToJSON CouponDiscountPricing

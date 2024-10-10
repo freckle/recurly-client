@@ -1,0 +1,8 @@
+module RecurlyClient.Types.AccountBalanceAmount where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data AccountBalanceAmount
+instance Show AccountBalanceAmount
+instance Eq AccountBalanceAmount
+instance Data.Aeson.FromJSON AccountBalanceAmount
+instance Data.Aeson.ToJSON AccountBalanceAmount

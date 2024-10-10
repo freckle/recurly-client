@@ -1,0 +1,18 @@
+module RecurlyClient.Types.AccountResponse where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data AccountResponse
+instance Show AccountResponse
+instance Eq AccountResponse
+instance Data.Aeson.FromJSON AccountResponse
+instance Data.Aeson.ToJSON AccountResponse
+data AccountResponseBill_to
+instance Show AccountResponseBill_to
+instance Eq AccountResponseBill_to
+instance Data.Aeson.FromJSON AccountResponseBill_to
+instance Data.Aeson.ToJSON AccountResponseBill_to
+data AccountResponsePreferred_locale
+instance Show AccountResponsePreferred_locale
+instance Eq AccountResponsePreferred_locale
+instance Data.Aeson.FromJSON AccountResponsePreferred_locale
+instance Data.Aeson.ToJSON AccountResponsePreferred_locale

@@ -1,0 +1,8 @@
+module RecurlyClient.Types.AccountAcquisitionReadOnly where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data AccountAcquisitionReadOnly
+instance Show AccountAcquisitionReadOnly
+instance Eq AccountAcquisitionReadOnly
+instance Data.Aeson.FromJSON AccountAcquisitionReadOnly
+instance Data.Aeson.ToJSON AccountAcquisitionReadOnly

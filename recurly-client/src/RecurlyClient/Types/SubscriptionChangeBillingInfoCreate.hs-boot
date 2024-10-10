@@ -1,0 +1,8 @@
+module RecurlyClient.Types.SubscriptionChangeBillingInfoCreate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data SubscriptionChangeBillingInfoCreate
+instance Show SubscriptionChangeBillingInfoCreate
+instance Eq SubscriptionChangeBillingInfoCreate
+instance Data.Aeson.FromJSON SubscriptionChangeBillingInfoCreate
+instance Data.Aeson.ToJSON SubscriptionChangeBillingInfoCreate

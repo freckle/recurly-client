@@ -1,0 +1,18 @@
+module RecurlyClient.Types.SubscriptionAddOnUpdate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data SubscriptionAddOnUpdate
+instance Show SubscriptionAddOnUpdate
+instance Eq SubscriptionAddOnUpdate
+instance Data.Aeson.FromJSON SubscriptionAddOnUpdate
+instance Data.Aeson.ToJSON SubscriptionAddOnUpdate
+data SubscriptionAddOnUpdateAdd_on_source
+instance Show SubscriptionAddOnUpdateAdd_on_source
+instance Eq SubscriptionAddOnUpdateAdd_on_source
+instance Data.Aeson.FromJSON SubscriptionAddOnUpdateAdd_on_source
+instance Data.Aeson.ToJSON SubscriptionAddOnUpdateAdd_on_source
+data SubscriptionAddOnUpdateRevenue_schedule_type
+instance Show SubscriptionAddOnUpdateRevenue_schedule_type
+instance Eq SubscriptionAddOnUpdateRevenue_schedule_type
+instance Data.Aeson.FromJSON SubscriptionAddOnUpdateRevenue_schedule_type
+instance Data.Aeson.ToJSON SubscriptionAddOnUpdateRevenue_schedule_type

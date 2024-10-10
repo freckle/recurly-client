@@ -1,0 +1,28 @@
+module RecurlyClient.Types.SubscriptionCreate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data SubscriptionCreate
+instance Show SubscriptionCreate
+instance Eq SubscriptionCreate
+instance Data.Aeson.FromJSON SubscriptionCreate
+instance Data.Aeson.ToJSON SubscriptionCreate
+data SubscriptionCreateCollection_method
+instance Show SubscriptionCreateCollection_method
+instance Eq SubscriptionCreateCollection_method
+instance Data.Aeson.FromJSON SubscriptionCreateCollection_method
+instance Data.Aeson.ToJSON SubscriptionCreateCollection_method
+data SubscriptionCreateNet_terms_type
+instance Show SubscriptionCreateNet_terms_type
+instance Eq SubscriptionCreateNet_terms_type
+instance Data.Aeson.FromJSON SubscriptionCreateNet_terms_type
+instance Data.Aeson.ToJSON SubscriptionCreateNet_terms_type
+data SubscriptionCreateRevenue_schedule_type
+instance Show SubscriptionCreateRevenue_schedule_type
+instance Eq SubscriptionCreateRevenue_schedule_type
+instance Data.Aeson.FromJSON SubscriptionCreateRevenue_schedule_type
+instance Data.Aeson.ToJSON SubscriptionCreateRevenue_schedule_type
+data SubscriptionCreateTransaction_type
+instance Show SubscriptionCreateTransaction_type
+instance Eq SubscriptionCreateTransaction_type
+instance Data.Aeson.FromJSON SubscriptionCreateTransaction_type
+instance Data.Aeson.ToJSON SubscriptionCreateTransaction_type

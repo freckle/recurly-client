@@ -1,0 +1,38 @@
+module RecurlyClient.Types.CouponCreate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data CouponCreate
+instance Show CouponCreate
+instance Eq CouponCreate
+instance Data.Aeson.FromJSON CouponCreate
+instance Data.Aeson.ToJSON CouponCreate
+data CouponCreateCoupon_type
+instance Show CouponCreateCoupon_type
+instance Eq CouponCreateCoupon_type
+instance Data.Aeson.FromJSON CouponCreateCoupon_type
+instance Data.Aeson.ToJSON CouponCreateCoupon_type
+data CouponCreateDiscount_type
+instance Show CouponCreateDiscount_type
+instance Eq CouponCreateDiscount_type
+instance Data.Aeson.FromJSON CouponCreateDiscount_type
+instance Data.Aeson.ToJSON CouponCreateDiscount_type
+data CouponCreateDuration
+instance Show CouponCreateDuration
+instance Eq CouponCreateDuration
+instance Data.Aeson.FromJSON CouponCreateDuration
+instance Data.Aeson.ToJSON CouponCreateDuration
+data CouponCreateFree_trial_unit
+instance Show CouponCreateFree_trial_unit
+instance Eq CouponCreateFree_trial_unit
+instance Data.Aeson.FromJSON CouponCreateFree_trial_unit
+instance Data.Aeson.ToJSON CouponCreateFree_trial_unit
+data CouponCreateRedemption_resource
+instance Show CouponCreateRedemption_resource
+instance Eq CouponCreateRedemption_resource
+instance Data.Aeson.FromJSON CouponCreateRedemption_resource
+instance Data.Aeson.ToJSON CouponCreateRedemption_resource
+data CouponCreateTemporal_unit
+instance Show CouponCreateTemporal_unit
+instance Eq CouponCreateTemporal_unit
+instance Data.Aeson.FromJSON CouponCreateTemporal_unit
+instance Data.Aeson.ToJSON CouponCreateTemporal_unit

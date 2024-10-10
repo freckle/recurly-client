@@ -1,0 +1,13 @@
+module RecurlyClient.Types.InvoiceCollect where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data InvoiceCollect
+instance Show InvoiceCollect
+instance Eq InvoiceCollect
+instance Data.Aeson.FromJSON InvoiceCollect
+instance Data.Aeson.ToJSON InvoiceCollect
+data InvoiceCollectTransaction_type
+instance Show InvoiceCollectTransaction_type
+instance Eq InvoiceCollectTransaction_type
+instance Data.Aeson.FromJSON InvoiceCollectTransaction_type
+instance Data.Aeson.ToJSON InvoiceCollectTransaction_type

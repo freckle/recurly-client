@@ -1,0 +1,13 @@
+module RecurlyClient.Types.GeneralLedgerAccountCreate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data GeneralLedgerAccountCreate
+instance Show GeneralLedgerAccountCreate
+instance Eq GeneralLedgerAccountCreate
+instance Data.Aeson.FromJSON GeneralLedgerAccountCreate
+instance Data.Aeson.ToJSON GeneralLedgerAccountCreate
+data GeneralLedgerAccountCreateAccount_type
+instance Show GeneralLedgerAccountCreateAccount_type
+instance Eq GeneralLedgerAccountCreateAccount_type
+instance Data.Aeson.FromJSON GeneralLedgerAccountCreateAccount_type
+instance Data.Aeson.ToJSON GeneralLedgerAccountCreateAccount_type

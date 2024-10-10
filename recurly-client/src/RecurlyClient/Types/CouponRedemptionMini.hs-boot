@@ -1,0 +1,13 @@
+module RecurlyClient.Types.CouponRedemptionMini where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data CouponRedemptionMini
+instance Show CouponRedemptionMini
+instance Eq CouponRedemptionMini
+instance Data.Aeson.FromJSON CouponRedemptionMini
+instance Data.Aeson.ToJSON CouponRedemptionMini
+data CouponRedemptionMiniState
+instance Show CouponRedemptionMiniState
+instance Eq CouponRedemptionMiniState
+instance Data.Aeson.FromJSON CouponRedemptionMiniState
+instance Data.Aeson.ToJSON CouponRedemptionMiniState

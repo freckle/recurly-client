@@ -1,0 +1,18 @@
+module RecurlyClient.Types.InvoiceCreate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data InvoiceCreate
+instance Show InvoiceCreate
+instance Eq InvoiceCreate
+instance Data.Aeson.FromJSON InvoiceCreate
+instance Data.Aeson.ToJSON InvoiceCreate
+data InvoiceCreateCollection_method
+instance Show InvoiceCreateCollection_method
+instance Eq InvoiceCreateCollection_method
+instance Data.Aeson.FromJSON InvoiceCreateCollection_method
+instance Data.Aeson.ToJSON InvoiceCreateCollection_method
+data InvoiceCreateNet_terms_type
+instance Show InvoiceCreateNet_terms_type
+instance Eq InvoiceCreateNet_terms_type
+instance Data.Aeson.FromJSON InvoiceCreateNet_terms_type
+instance Data.Aeson.ToJSON InvoiceCreateNet_terms_type
