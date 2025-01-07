@@ -1,5 +1,5 @@
 # Delete all generated code and re-regenerate it all anew
-regenerate: clean fetch convert-to-json generate-haskell-code fix-nulls format-generated-code set-package-version
+regenerate: clean fetch convert-to-json generate-haskell-code fix-nulls format-generated-code patch-cabal-file
 
 # Delete all generated code
 clean:
@@ -32,8 +32,31 @@ format-generated-code:
   #!/usr/bin/env -S nix shell --accept-flake-config 'github:freckle/flakes?dir=main#fourmolu-default' --command bash
   fourmolu -i recurly-client/src --unsafe
 
-# Use version.txt as the version in the .cabal file
-set-package-version:
-  #!/usr/bin/env bash
+patch-cabal-file:
+  #!/usr/bin/env -S nix shell 'nixpkgs#haskellPackages.cabal-fmt' --command bash
+
+  # Use version.txt as the version in the .cabal file
   VERSION=$(cat version.txt)
-  perl -p -i -e "s/^(version: *).*$/\${1}${VERSION}/" recurly-client/recurly-client.cabal
+
+  sed "s|^version: *.*$|version: ${VERSION}|" recurly-client/recurly-client.cabal \
+    > recurly-client/recurly-client.cabal.tmp.1
+
+  # First line contains cabal-version
+  head -n1 recurly-client/recurly-client.cabal.tmp.1 \
+    > recurly-client/recurly-client.cabal.tmp.2
+
+  # Add extra top-level fields
+  cat ./cabal-fields.txt >> recurly-client/recurly-client.cabal.tmp.2
+
+  # Copy the rest
+  tail -n +2 recurly-client/recurly-client.cabal.tmp.1 \
+    >> recurly-client/recurly-client.cabal.tmp.2
+
+  # Replace the original
+  mv -f recurly-client/recurly-client.cabal.tmp.2 recurly-client/recurly-client.cabal
+
+  # Clean up temporarily files
+  rm recurly-client/recurly-client.cabal.tmp.*
+
+  # Clean up cabal file
+  cabal-fmt -i recurly-client/recurly-client.cabal

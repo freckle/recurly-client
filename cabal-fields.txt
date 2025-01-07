@@ -1,0 +1,4 @@
+category: Client, Payments
+homepage: https://github.com/freckle/recurly-client
+license-file: LICENSE
+license: MIT
