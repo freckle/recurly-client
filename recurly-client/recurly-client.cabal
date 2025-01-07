@@ -1,10 +1,10 @@
 cabal-version: 1.12
+version:       0.0.0.1
 category:      Client, Payments
 homepage:      https://github.com/freckle/recurly-client
 license-file:  LICENSE
 license:       MIT
 name:          recurly-client
-version:       0.0.0.1
 build-type:    Simple
 
 library

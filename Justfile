@@ -5,7 +5,7 @@ regenerate: clean fetch convert-to-json generate-haskell-code fix-nulls format-g
 
 # Delete all generated code
 clean:
-  rm -rf spec.json spec.yaml recurly-client
+  rm -rf spec.json spec.yaml recurly-client/src recurly-client/*.cabal
 
 # Download the OpenAPI spec
 fetch:
@@ -29,15 +29,16 @@ format-generated-code:
   fourmolu -i recurly-client/src --unsafe
 
 patch-cabal-file:
-  # Use version.txt as the version in the .cabal file
-  VERSION=$(cat version.txt)
-
-  sed "s|^version: *.*$|version: ${VERSION}|" recurly-client/recurly-client.cabal \
+  grep -v "^version:" recurly-client/recurly-client.cabal \
     > recurly-client/recurly-client.cabal.tmp.1
 
   # First line contains cabal-version
   head -n1 recurly-client/recurly-client.cabal.tmp.1 \
     > recurly-client/recurly-client.cabal.tmp.2
+
+  # Set version
+  echo -n "version: " >> recurly-client/recurly-client.cabal.tmp.2
+  cat ./version.txt >> recurly-client/recurly-client.cabal.tmp.2
 
   # Add extra top-level fields
   cat ./cabal-fields.txt >> recurly-client/recurly-client.cabal.tmp.2
