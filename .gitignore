@@ -1,3 +1,5 @@
 .stack-work
 *.hie
 .hiedb
+stack-*.lock
+stack.*.lock
