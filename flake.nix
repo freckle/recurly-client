@@ -16,11 +16,14 @@
       in
       rec {
         packages = {
+          cabal-fmt = nixpkgs.haskellPackages.cabal-fmt;
           fourmolu = freckle.fourmolu-0-13-x;
-
           ghc = freckleLib.haskellBundle {
             ghcVersion = "ghc-9-8-4";
           };
+          openapi3-code-generator = freckle.haskell-openapi3-code-generator-default;
+          perl = nixpkgs.perl;
+          yq = nixpkgs.yq;
         };
 
         devShells.default = nixpkgs.mkShell {
@@ -32,8 +35,12 @@
           ];
 
           nativeBuildInputs = with (packages); [
+            cabal-fmt
             fourmolu
             ghc
+            openapi3-code-generator
+            perl
+            yq
           ];
 
           shellHook = ''
