@@ -1,0 +1,62 @@
+name: Release
+
+on:
+  push:
+    branches: main
+  workflow_dispatch:
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    env:
+      SHA: ${{ github.sha }}
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: tag
+        name: Tag
+        run: |
+          TAG=$(<version.txt)
+
+          if gh api "/repos/{owner}/{repo}/git/ref/tags/$TAG" &>/dev/null; then
+            echo "Tag $TAG exists already"
+            exit 0
+          fi
+
+          gh api '/repos/{owner}/{repo}/git/tags' \
+            --method POST \
+            --raw-field "tag=$TAG" \
+            --raw-field "message=$TAG" \
+            --raw-field "object=$SHA" \
+            --raw-field "type=commit"
+
+          gh api '/repos/{owner}/{repo}/git/refs' \
+            --method POST \
+            --raw-field "ref=refs/tags/$TAG" \
+            --raw-field "sha=$SHA"
+
+          echo "tag=$TAG" >>"$GITHUB_OUTPUT"
+
+  release:
+    needs: tag
+    if: needs.tag.outputs.tag
+    runs-on: ubuntu-latest
+    env:
+      HACKAGE_KEY: ${{ secrets.HACKAGE_UPLOAD_API_KEY }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "Build with Haddocks"
+        uses: freckle/stack-action@v5
+        with:
+          test: false
+          stack-build-arguments: --haddock --haddock-for-hackage
+
+      - name: "Release to Hackage"
+        run: stack --stack-yaml stack-lts20.yaml upload --pvp-bounds lower recurly-client
+
+      - name: "Upload documentation"
+        run: stack upload --documentation recurly-client
