@@ -4,6 +4,7 @@ category:      Client, Payments
 homepage:      https://github.com/freckle/recurly-client
 license-file:  LICENSE
 license:       MIT
+maintainer:    Freckle Education
 name:          recurly-client
 build-type:    Simple
 
