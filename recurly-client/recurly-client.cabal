@@ -5,6 +5,11 @@ homepage:      https://github.com/freckle/recurly-client
 license-file:  LICENSE
 license:       MIT
 maintainer:    Freckle Education
+synopsis:      Client for Recurly subscription management
+description:
+  Auto-generated from OpenAPI specification.
+  See Recurly API documentation at https://recurly.com/developers/api/
+
 name:          recurly-client
 build-type:    Simple
 

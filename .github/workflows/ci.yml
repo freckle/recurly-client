@@ -36,3 +36,10 @@ jobs:
           stack-build-arguments: "--fast"
         env:
           STACK_YAML: ${{ matrix.stack-yaml }}
+
+  cabal-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cabal check --ignore=missing-upper-bounds
+        working-directory: recurly-client
