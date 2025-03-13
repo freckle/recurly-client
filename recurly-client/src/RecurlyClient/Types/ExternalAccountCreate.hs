@@ -37,7 +37,7 @@ data ExternalAccountCreate = ExternalAccountCreate
     { externalAccountCreateExternal_account_code :: Data.Text.Internal.Text
     -- ^ external_account_code: Represents the account code for the external account.
     , externalAccountCreateExternal_connection_type :: Data.Text.Internal.Text
-    -- ^ external_connection_type: Represents the connection type. \`AppleAppStore\` or \`GooglePlayStore\`
+    -- ^ external_connection_type: Represents the connection type. One of the connection types of your enabled App Connectors
     }
     deriving
         ( GHC.Show.Show

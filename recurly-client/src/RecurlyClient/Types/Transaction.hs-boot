@@ -21,6 +21,16 @@ instance Show TransactionCvv_check
 instance Eq TransactionCvv_check
 instance Data.Aeson.FromJSON TransactionCvv_check
 instance Data.Aeson.ToJSON TransactionCvv_check
+data TransactionIndicator
+instance Show TransactionIndicator
+instance Eq TransactionIndicator
+instance Data.Aeson.FromJSON TransactionIndicator
+instance Data.Aeson.ToJSON TransactionIndicator
+data TransactionMerchant_reason_code
+instance Show TransactionMerchant_reason_code
+instance Eq TransactionMerchant_reason_code
+instance Data.Aeson.FromJSON TransactionMerchant_reason_code
+instance Data.Aeson.ToJSON TransactionMerchant_reason_code
 data TransactionOrigin
 instance Show TransactionOrigin
 instance Eq TransactionOrigin

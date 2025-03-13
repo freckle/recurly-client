@@ -21,6 +21,11 @@ instance Show PaymentMethodCard_type
 instance Eq PaymentMethodCard_type
 instance Data.Aeson.FromJSON PaymentMethodCard_type
 instance Data.Aeson.ToJSON PaymentMethodCard_type
+data PaymentMethodFunding_source
+instance Show PaymentMethodFunding_source
+instance Eq PaymentMethodFunding_source
+instance Data.Aeson.FromJSON PaymentMethodFunding_source
+instance Data.Aeson.ToJSON PaymentMethodFunding_source
 data PaymentMethodGateway_attributes
 instance Show PaymentMethodGateway_attributes
 instance Eq PaymentMethodGateway_attributes

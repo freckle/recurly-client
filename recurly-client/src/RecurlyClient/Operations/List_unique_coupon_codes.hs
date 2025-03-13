@@ -98,6 +98,7 @@ list_unique_coupon_codes parameters =
             , RecurlyClient.Common.QueryParameter (Data.Text.Internal.pack "sort") (Data.Aeson.Types.ToJSON.toJSON Data.Functor.<$> list_unique_coupon_codesParametersQuerySort parameters) (Data.Text.Internal.pack "form") GHC.Types.False
             , RecurlyClient.Common.QueryParameter (Data.Text.Internal.pack "begin_time") (Data.Aeson.Types.ToJSON.toJSON Data.Functor.<$> list_unique_coupon_codesParametersQueryBegin_time parameters) (Data.Text.Internal.pack "form") GHC.Types.False
             , RecurlyClient.Common.QueryParameter (Data.Text.Internal.pack "end_time") (Data.Aeson.Types.ToJSON.toJSON Data.Functor.<$> list_unique_coupon_codesParametersQueryEnd_time parameters) (Data.Text.Internal.pack "form") GHC.Types.False
+            , RecurlyClient.Common.QueryParameter (Data.Text.Internal.pack "redeemed") (Data.Aeson.Types.ToJSON.toJSON Data.Functor.<$> list_unique_coupon_codesParametersQueryRedeemed parameters) (Data.Text.Internal.pack "form") GHC.Types.False
             ]
         )
 
@@ -144,6 +145,10 @@ data List_unique_coupon_codesParameters = List_unique_coupon_codesParameters
     -- ^ queryOrder: Represents the parameter named \'order\'
     --
     -- Sort order.
+    , list_unique_coupon_codesParametersQueryRedeemed :: (GHC.Maybe.Maybe List_unique_coupon_codesParametersQueryRedeemed)
+    -- ^ queryRedeemed: Represents the parameter named \'redeemed\'
+    --
+    -- Filter unique coupon codes by redemption status. \`true\` for redeemed, \`false\` for not redeemed.
     , list_unique_coupon_codesParametersQuerySort :: (GHC.Maybe.Maybe List_unique_coupon_codesParametersQuerySort)
     -- ^ querySort: Represents the parameter named \'sort\'
     --
@@ -157,10 +162,10 @@ data List_unique_coupon_codesParameters = List_unique_coupon_codesParameters
         )
 
 instance Data.Aeson.Types.ToJSON.ToJSON List_unique_coupon_codesParameters where
-    toJSON obj = Data.Aeson.Types.Internal.object (Data.Foldable.concat (["pathCoupon_id" Data.Aeson.Types.ToJSON..= list_unique_coupon_codesParametersPathCoupon_id obj] : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryBegin_time" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryBegin_time obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryEnd_time" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryEnd_time obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryIds" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryIds obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryLimit" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryLimit obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryOrder" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryOrder obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("querySort" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQuerySort obj) : GHC.Base.mempty))
-    toEncoding obj = Data.Aeson.Encoding.Internal.pairs (GHC.Base.mconcat (Data.Foldable.concat (["pathCoupon_id" Data.Aeson.Types.ToJSON..= list_unique_coupon_codesParametersPathCoupon_id obj] : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryBegin_time" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryBegin_time obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryEnd_time" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryEnd_time obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryIds" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryIds obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryLimit" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryLimit obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryOrder" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryOrder obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("querySort" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQuerySort obj) : GHC.Base.mempty)))
+    toJSON obj = Data.Aeson.Types.Internal.object (Data.Foldable.concat (["pathCoupon_id" Data.Aeson.Types.ToJSON..= list_unique_coupon_codesParametersPathCoupon_id obj] : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryBegin_time" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryBegin_time obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryEnd_time" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryEnd_time obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryIds" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryIds obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryLimit" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryLimit obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryOrder" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryOrder obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryRedeemed" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryRedeemed obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("querySort" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQuerySort obj) : GHC.Base.mempty))
+    toEncoding obj = Data.Aeson.Encoding.Internal.pairs (GHC.Base.mconcat (Data.Foldable.concat (["pathCoupon_id" Data.Aeson.Types.ToJSON..= list_unique_coupon_codesParametersPathCoupon_id obj] : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryBegin_time" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryBegin_time obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryEnd_time" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryEnd_time obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryIds" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryIds obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryLimit" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryLimit obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryOrder" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryOrder obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("queryRedeemed" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQueryRedeemed obj) : Data.Maybe.maybe GHC.Base.mempty (GHC.Base.pure GHC.Base.. ("querySort" Data.Aeson.Types.ToJSON..=)) (list_unique_coupon_codesParametersQuerySort obj) : GHC.Base.mempty)))
 instance Data.Aeson.Types.FromJSON.FromJSON List_unique_coupon_codesParameters where
-    parseJSON = Data.Aeson.Types.FromJSON.withObject "List_unique_coupon_codesParameters" (\obj -> ((((((GHC.Base.pure List_unique_coupon_codesParameters GHC.Base.<*> (obj Data.Aeson.Types.FromJSON..: "pathCoupon_id")) GHC.Base.<*> (obj Data.Aeson.Types.FromJSON..:? "queryBegin_time")) GHC.Base.<*> (obj Data.Aeson.Types.FromJSON..:? "queryEnd_time")) GHC.Base.<*> (obj Data.Aeson.Types.FromJSON..:? "queryIds")) GHC.Base.<*> (obj Data.Aeson.Types.FromJSON..:? "queryLimit")) GHC.Base.<*> (obj Data.Aeson.Types.FromJSON..:? "queryOrder")) GHC.Base.<*> (obj Data.Aeson.Types.FromJSON..:? "querySort"))
+    parseJSON = Data.Aeson.Types.FromJSON.withObject "List_unique_coupon_codesParameters" (\obj -> (((((((GHC.Base.pure List_unique_coupon_codesParameters GHC.Base.<*> (obj Data.Aeson.Types.FromJSON..: "pathCoupon_id")) GHC.Base.<*> (obj Data.Aeson.Types.FromJSON..:? "queryBegin_time")) GHC.Base.<*> (obj Data.Aeson.Types.FromJSON..:? "queryEnd_time")) GHC.Base.<*> (obj Data.Aeson.Types.FromJSON..:? "queryIds")) GHC.Base.<*> (obj Data.Aeson.Types.FromJSON..:? "queryLimit")) GHC.Base.<*> (obj Data.Aeson.Types.FromJSON..:? "queryOrder")) GHC.Base.<*> (obj Data.Aeson.Types.FromJSON..:? "queryRedeemed")) GHC.Base.<*> (obj Data.Aeson.Types.FromJSON..:? "querySort"))
 
 -- | Create a new 'List_unique_coupon_codesParameters' with all required fields.
 mkList_unique_coupon_codesParameters ::
@@ -175,6 +180,7 @@ mkList_unique_coupon_codesParameters list_unique_coupon_codesParametersPathCoupo
         , list_unique_coupon_codesParametersQueryIds = GHC.Maybe.Nothing
         , list_unique_coupon_codesParametersQueryLimit = GHC.Maybe.Nothing
         , list_unique_coupon_codesParametersQueryOrder = GHC.Maybe.Nothing
+        , list_unique_coupon_codesParametersQueryRedeemed = GHC.Maybe.Nothing
         , list_unique_coupon_codesParametersQuerySort = GHC.Maybe.Nothing
         }
 
@@ -207,6 +213,37 @@ instance Data.Aeson.Types.FromJSON.FromJSON List_unique_coupon_codesParametersQu
                 | val GHC.Classes.== "asc" -> List_unique_coupon_codesParametersQueryOrderEnumAsc
                 | val GHC.Classes.== "desc" -> List_unique_coupon_codesParametersQueryOrderEnumDesc
                 | GHC.Base.otherwise -> List_unique_coupon_codesParametersQueryOrderOther val
+            )
+
+{- | Defines the enum schema located at @paths.\/coupons\/{coupon_id}\/unique_coupon_codes.GET.parameters.properties.queryRedeemed@ in the specification.
+
+Represents the parameter named \'redeemed\'
+
+Filter unique coupon codes by redemption status. \`true\` for redeemed, \`false\` for not redeemed.
+-}
+data List_unique_coupon_codesParametersQueryRedeemed
+    = -- | This case is used if the value encountered during decoding does not match any of the provided cases in the specification.
+      List_unique_coupon_codesParametersQueryRedeemedOther Data.Aeson.Types.Internal.Value
+    | -- | This constructor can be used to send values to the server which are not present in the specification yet.
+      List_unique_coupon_codesParametersQueryRedeemedTyped Data.Text.Internal.Text
+    | -- | Represents the JSON value @true@
+      List_unique_coupon_codesParametersQueryRedeemedEnumTrue
+    | -- | Represents the JSON value @false@
+      List_unique_coupon_codesParametersQueryRedeemedEnumFalse
+    deriving (GHC.Show.Show, GHC.Classes.Eq)
+
+instance Data.Aeson.Types.ToJSON.ToJSON List_unique_coupon_codesParametersQueryRedeemed where
+    toJSON (List_unique_coupon_codesParametersQueryRedeemedOther val) = val
+    toJSON (List_unique_coupon_codesParametersQueryRedeemedTyped val) = Data.Aeson.Types.ToJSON.toJSON val
+    toJSON (List_unique_coupon_codesParametersQueryRedeemedEnumTrue) = Data.Aeson.Types.Internal.Bool GHC.Types.True
+    toJSON (List_unique_coupon_codesParametersQueryRedeemedEnumFalse) = Data.Aeson.Types.Internal.Bool GHC.Types.False
+instance Data.Aeson.Types.FromJSON.FromJSON List_unique_coupon_codesParametersQueryRedeemed where
+    parseJSON val =
+        GHC.Base.pure
+            ( if
+                | val GHC.Classes.== Data.Aeson.Types.Internal.Bool GHC.Types.True -> List_unique_coupon_codesParametersQueryRedeemedEnumTrue
+                | val GHC.Classes.== Data.Aeson.Types.Internal.Bool GHC.Types.False -> List_unique_coupon_codesParametersQueryRedeemedEnumFalse
+                | GHC.Base.otherwise -> List_unique_coupon_codesParametersQueryRedeemedOther val
             )
 
 {- | Defines the enum schema located at @paths.\/coupons\/{coupon_id}\/unique_coupon_codes.GET.parameters.properties.querySort@ in the specification.
@@ -316,6 +353,7 @@ list_unique_coupon_codesWithConfiguration
                 , RecurlyClient.Common.QueryParameter (Data.Text.Internal.pack "sort") (Data.Aeson.Types.ToJSON.toJSON Data.Functor.<$> list_unique_coupon_codesParametersQuerySort parameters) (Data.Text.Internal.pack "form") GHC.Types.False
                 , RecurlyClient.Common.QueryParameter (Data.Text.Internal.pack "begin_time") (Data.Aeson.Types.ToJSON.toJSON Data.Functor.<$> list_unique_coupon_codesParametersQueryBegin_time parameters) (Data.Text.Internal.pack "form") GHC.Types.False
                 , RecurlyClient.Common.QueryParameter (Data.Text.Internal.pack "end_time") (Data.Aeson.Types.ToJSON.toJSON Data.Functor.<$> list_unique_coupon_codesParametersQueryEnd_time parameters) (Data.Text.Internal.pack "form") GHC.Types.False
+                , RecurlyClient.Common.QueryParameter (Data.Text.Internal.pack "redeemed") (Data.Aeson.Types.ToJSON.toJSON Data.Functor.<$> list_unique_coupon_codesParametersQueryRedeemed parameters) (Data.Text.Internal.pack "form") GHC.Types.False
                 ]
             )
 
@@ -341,6 +379,7 @@ list_unique_coupon_codesRaw parameters =
             , RecurlyClient.Common.QueryParameter (Data.Text.Internal.pack "sort") (Data.Aeson.Types.ToJSON.toJSON Data.Functor.<$> list_unique_coupon_codesParametersQuerySort parameters) (Data.Text.Internal.pack "form") GHC.Types.False
             , RecurlyClient.Common.QueryParameter (Data.Text.Internal.pack "begin_time") (Data.Aeson.Types.ToJSON.toJSON Data.Functor.<$> list_unique_coupon_codesParametersQueryBegin_time parameters) (Data.Text.Internal.pack "form") GHC.Types.False
             , RecurlyClient.Common.QueryParameter (Data.Text.Internal.pack "end_time") (Data.Aeson.Types.ToJSON.toJSON Data.Functor.<$> list_unique_coupon_codesParametersQueryEnd_time parameters) (Data.Text.Internal.pack "form") GHC.Types.False
+            , RecurlyClient.Common.QueryParameter (Data.Text.Internal.pack "redeemed") (Data.Aeson.Types.ToJSON.toJSON Data.Functor.<$> list_unique_coupon_codesParametersQueryRedeemed parameters) (Data.Text.Internal.pack "form") GHC.Types.False
             ]
         )
 
@@ -371,5 +410,6 @@ list_unique_coupon_codesWithConfigurationRaw
                 , RecurlyClient.Common.QueryParameter (Data.Text.Internal.pack "sort") (Data.Aeson.Types.ToJSON.toJSON Data.Functor.<$> list_unique_coupon_codesParametersQuerySort parameters) (Data.Text.Internal.pack "form") GHC.Types.False
                 , RecurlyClient.Common.QueryParameter (Data.Text.Internal.pack "begin_time") (Data.Aeson.Types.ToJSON.toJSON Data.Functor.<$> list_unique_coupon_codesParametersQueryBegin_time parameters) (Data.Text.Internal.pack "form") GHC.Types.False
                 , RecurlyClient.Common.QueryParameter (Data.Text.Internal.pack "end_time") (Data.Aeson.Types.ToJSON.toJSON Data.Functor.<$> list_unique_coupon_codesParametersQueryEnd_time parameters) (Data.Text.Internal.pack "form") GHC.Types.False
+                , RecurlyClient.Common.QueryParameter (Data.Text.Internal.pack "redeemed") (Data.Aeson.Types.ToJSON.toJSON Data.Functor.<$> list_unique_coupon_codesParametersQueryRedeemed parameters) (Data.Text.Internal.pack "form") GHC.Types.False
                 ]
             )
