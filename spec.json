@@ -4752,7 +4752,7 @@
             }
           },
           "400": {
-            "description": "Invalid or unpermitted parameter; perhaps you tried to generate more than 200 codes at a time?",
+            "description": "Invalid or unpermitted parameter.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4892,6 +4892,9 @@
           },
           {
             "$ref": "#/components/parameters/filter_end_time"
+          },
+          {
+            "$ref": "#/components/parameters/filter_redeemed"
           }
         ],
         "responses": {
@@ -6884,12 +6887,72 @@
       }
     },
     "/external_subscriptions": {
+      "post": {
+        "tags": [
+          "external_subscriptions"
+        ],
+        "operationId": "create_external_subscription",
+        "summary": "Create an external subscription",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExternalSubscriptionCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Returns the external subscription",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalSubscription"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request; perhaps missing or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "External subscription cannot be completed for the specified reason.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-code-samples": []
+      },
       "get": {
         "tags": [
           "external_subscriptions"
         ],
         "operationId": "list_external_subscriptions",
-        "summary": "List a site's external subscriptions",
+        "summary": "List the external subscriptions on a site",
         "description": "See the [Pagination Guide](/developers/guides/pagination.html) to learn how to use pagination in the API and Client Libraries.",
         "parameters": [
           {
@@ -6932,12 +6995,12 @@
       }
     },
     "/external_subscriptions/{external_subscription_id}": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/external_subscription_id_fetch"
-        }
-      ],
       "get": {
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/external_subscription_id_fetch"
+          }
+        ],
         "tags": [
           "external_subscriptions"
         ],
@@ -6950,6 +7013,81 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ExternalSubscription"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Incorrect site or external subscription ID.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error with external resource connection or feature flag.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-code-samples": []
+      },
+      "put": {
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/external_subscription_id"
+          }
+        ],
+        "tags": [
+          "external_subscriptions"
+        ],
+        "operationId": "put_external_subscription",
+        "summary": "Update an external subscription",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExternalSubscriptionUpdate"
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "Settings for an external subscription.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalSubscription"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request; perhaps missing or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -8277,7 +8415,7 @@
         ],
         "operationId": "refund_invoice",
         "summary": "Refund an invoice",
-        "description": "There are two ways to do a refund:\n* refund a specific amount which is divided across all the line items.\n* refund quantities of line items.\nIf you want to refund the entire refundable amount on the invoice, the\nsimplest way is to do `type=amount` without specifiying an `amount`.\n",
+        "description": "There are two ways to do a refund:\n* Apply a specific dollar/cent amount or percentage amount to an entire invoice, which will refund the resulting amount across all line items on the invoice.\n  * If you want to refund the entire refundable amount on the invoice, the simplest way is to do `type=amount` without specifiying an `amount`.\n  * Note: You must have the Credit Memos feature flag enabled on your site to utilize percentage amount refunds on invoices.\n* Apply a refund to one or more individual line items on an invoice. A line item can be refunded by a quantity amount, a specific dollar/cent amount, or a percentage amount and will only apply to the specific line item you are aiming to refund.\n  * Note: You must have the Credit Memos feature flag enabled on your site to utilize specific dollar/cent amount and percentage amount refunds on line items.\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/invoice_id"
@@ -14585,6 +14723,18 @@
           ]
         }
       },
+      "filter_redeemed": {
+        "name": "redeemed",
+        "in": "query",
+        "description": "Filter unique coupon codes by redemption status. `true` for redeemed, `false` for not redeemed.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            true,
+            false
+          ]
+        }
+      },
       "export_date": {
         "name": "export_date",
         "in": "path",
@@ -16554,6 +16704,13 @@
             "type": "boolean",
             "description": "The `backup_payment_method` field is used to indicate a billing info as a backup on the account that will be tried if the initial billing info used for an invoice is declined."
           },
+          "payment_gateway_references": {
+            "type": "array",
+            "description": "Array of Payment Gateway References, each a reference to a third-party gateway object of varying types.",
+            "items": {
+              "$ref": "#/components/schemas/PaymentGatewayReferences"
+            }
+          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -16654,8 +16811,30 @@
           },
           "gateway_code": {
             "type": "string",
-            "title": "An identifier for a specific payment gateway. Must be used in conjunction with `gateway_token`.",
+            "title": "An identifier for a specific payment gateway.",
             "maxLength": 12
+          },
+          "payment_gateway_references": {
+            "type": "array",
+            "description": "Array of Payment Gateway References, each a reference to a third-party gateway object of varying types.",
+            "items": {
+              "$ref": "#/components/schemas/PaymentGatewayReferences"
+            },
+            "properties": {
+              "token": {
+                "type": "string",
+                "maxLength": 50
+              },
+              "reference_type": {
+                "type": "string",
+                "description": "The type of reference token. Required if token is passed in for Stripe Gateway.",
+                "enum": [
+                  "stripe_confirmation_token",
+                  "stripe_customer",
+                  "stripe_payment_method"
+                ]
+              }
+            }
           },
           "gateway_attributes": {
             "type": "object",
@@ -17260,9 +17439,8 @@
           "number_of_unique_codes": {
             "type": "integer",
             "title": "Number of unique codes",
-            "description": "The quantity of unique coupon codes to generate",
-            "minimum": 1,
-            "maximum": 200
+            "description": "The quantity of unique coupon codes to generate. A bulk coupon can have up to 100,000 unique codes (or your site's configured limit).",
+            "minimum": 1
           }
         }
       },
@@ -18535,6 +18713,16 @@
             "description": "3-letter ISO 4217 currency code.",
             "maxLength": 3
           },
+          "business_entity_id": {
+            "type": "string",
+            "title": "Business Entity ID",
+            "description": "The `business_entity_id` is the value that represents a specific business entity for an end customer which will be assigned to the invoice. Available when the `Multiple Business Entities` feature is enabled. If both `business_entity_id` and `business_entity_code` are present, `business_entity_id` will be used."
+          },
+          "business_entity_code": {
+            "type": "string",
+            "title": "Business Entity Code",
+            "description": "The `business_entity_code` is the value that represents a specific business entity for an end customer which will be assigned to the invoice. Available when the `Multiple Business Entities` feature is enabled. If both `business_entity_id` and `business_entity_code` are present, `business_entity_id` will be used."
+          },
           "collection_method": {
             "title": "Collection method",
             "description": "An automatic invoice means a corresponding transaction is run using the account's billing information at the same time the invoice is created. Manual invoices are created without a corresponding transaction. The merchant must enter a manual payment transaction or have the customer pay the invoice with an automatic method, like credit card, PayPal, Amazon, or ACH bank payment.",
@@ -19533,6 +19721,28 @@
           "type"
         ]
       },
+      "PaymentGatewayReferences": {
+        "type": "object",
+        "title": "Payment Gateway References Object",
+        "description": "Array of Payment Gateway References, each a reference to a third-party gateway object of varying types.",
+        "properties": {
+          "token": {
+            "type": "string",
+            "title": "Token",
+            "description": "Reference value used when the external token was created. If Stripe gateway is used, this value will need to be accompanied by its reference_type."
+          },
+          "reference_type": {
+            "type": "string",
+            "title": "Reference Type",
+            "description": "The type of reference token. Required if token is passed in for Stripe Gateway.",
+            "enum": [
+              "stripe_confirmation_token",
+              "stripe_customer",
+              "stripe_payment_method"
+            ]
+          }
+        }
+      },
       "PlanMini": {
         "type": "object",
         "title": "Plan mini details",
@@ -19735,6 +19945,11 @@
             "type": "boolean",
             "title": "Tax exempt?",
             "description": "`true` exempts tax on the plan, `false` applies tax on the plan."
+          },
+          "vertex_transaction_type": {
+            "type": "string",
+            "title": "Vertex Transaction Type",
+            "description": "Used by Vertex for tax calculations. Possible values are `sale`, `rental`, `lease`."
           },
           "currencies": {
             "type": "array",
@@ -19968,6 +20183,11 @@
             "type": "boolean",
             "title": "Tax exempt?",
             "description": "`true` exempts tax on the plan, `false` applies tax on the plan."
+          },
+          "vertex_transaction_type": {
+            "type": "string",
+            "title": "Vertex Transaction Type",
+            "description": "Used by Vertex for tax calculations. Possible values are `sale`, `rental`, `lease`."
           },
           "currencies": {
             "type": "array",
@@ -20248,6 +20468,11 @@
             "type": "boolean",
             "title": "Tax exempt?",
             "description": "`true` exempts tax on the plan, `false` applies tax on the plan."
+          },
+          "vertex_transaction_type": {
+            "type": "string",
+            "title": "Vertex Transaction Type",
+            "description": "Used by Vertex for tax calculations. Possible values are `sale`, `rental`, `lease`."
           },
           "currencies": {
             "type": "array",
@@ -21365,6 +21590,12 @@
             "maxLength": 13,
             "readOnly": true
           },
+          "business_entity_id": {
+            "type": "string",
+            "title": "Business Entity ID",
+            "description": "The ID of the business entity associated with the subscription. This will be `null` if the subscription relies on resolving the business entity during renewal.",
+            "maxLength": 13
+          },
           "started_with_gift": {
             "type": "boolean",
             "default": false,
@@ -21815,6 +22046,10 @@
             "title": "Invoice Collection",
             "$ref": "#/components/schemas/InvoiceCollection"
           },
+          "business_entity": {
+            "title": "Business Entity",
+            "$ref": "#/components/schemas/BusinessEntityMini"
+          },
           "custom_fields": {
             "$ref": "#/components/schemas/CustomFields"
           },
@@ -21894,6 +22129,16 @@
             "title": "New plan code",
             "maxLength": 50,
             "description": "If you want to change to a new plan, you can provide the plan's code or id. If both are provided the `plan_id` will be used."
+          },
+          "business_entity_id": {
+            "type": "string",
+            "title": "Business Entity ID",
+            "description": "The `business_entity_id` is the value that represents a specific business entity for an end customer. When `business_entity_id` is used to assign a business entity to the subscription, all future billing events for the subscription will bill to the specified business entity. Available when the `Multiple Business Entities` feature is enabled. If both `business_entity_id` and `business_entity_code` are present, `business_entity_id` will be used. Only allowed if the `timeframe` is not `now`."
+          },
+          "business_entity_code": {
+            "type": "string",
+            "title": "Business Entity Code",
+            "description": "The `business_entity_code` is the value that represents a specific business entity for an end customer. When `business_entity_code` is used to assign a business entity to the subscription, all future billing events for the subscription will bill to the specified business entity. Available when the `Multiple Business Entities` feature is enabled. If both `business_entity_id` and `business_entity_code` are present, `business_entity_id` will be used. Only allowed if the `timeframe` is not `now`."
           },
           "unit_amount": {
             "type": "number",
@@ -22050,6 +22295,16 @@
             "title": "Plan ID",
             "maxLength": 13,
             "description": "You must provide either a `plan_code` or `plan_id`. If both are provided the `plan_id` will be used."
+          },
+          "business_entity_id": {
+            "type": "string",
+            "title": "Business Entity ID",
+            "description": "The `business_entity_id` is the value that represents a specific business entity for an end customer. When `business_entity_id` is used to assign a business entity to the subscription, all future billing events for the subscription will bill to the specified business entity. Available when the `Multiple Business Entities` feature is enabled. If both `business_entity_id` and `business_entity_code` are present, `business_entity_id` will be used."
+          },
+          "business_entity_code": {
+            "type": "string",
+            "title": "Business Entity Code",
+            "description": "The `business_entity_code` is the value that represents a specific business entity for an end customer. When `business_entity_code` is used to assign a business entity to the subscription, all future billing events for the subscription will bill to the specified business entity. Available when the `Multiple Business Entities` feature is enabled. If both `business_entity_id` and `business_entity_code` are present, `business_entity_id` will be used."
           },
           "account": {
             "$ref": "#/components/schemas/AccountCreate"
@@ -22226,6 +22481,11 @@
             "type": "string",
             "title": "Gift card Redemption Code",
             "description": "A gift card redemption code to be redeemed on the purchase invoice."
+          },
+          "bulk": {
+            "type": "boolean",
+            "description": "Optional field to be used only when needing to bypass the 60 second limit on creating subscriptions. Should only be used when creating subscriptions in bulk from the API.",
+            "default": false
           }
         },
         "required": [
@@ -22334,6 +22594,11 @@
             "items": {
               "$ref": "#/components/schemas/SubscriptionRampInterval"
             }
+          },
+          "bulk": {
+            "type": "boolean",
+            "description": "Optional field to be used only when needing to bypass the 60 second limit on creating subscriptions. Should only be used when creating subscriptions in bulk from the API.",
+            "default": false
           }
         },
         "required": [
@@ -22695,8 +22960,29 @@
           "account": {
             "$ref": "#/components/schemas/AccountMini"
           },
+          "indicator": {
+            "type": "string",
+            "description": "Must be sent for one-time transactions in order to provide context on which entity is submitting the transaction to ensure proper fraud checks are observed, such as 3DS. If the customer is in session, send `customer`. If this is a merchant initiated one-time transaction, send `merchant`.",
+            "enum": [
+              "customer",
+              "merchant"
+            ]
+          },
           "invoice": {
             "$ref": "#/components/schemas/InvoiceMini"
+          },
+          "merchant_reason_code": {
+            "type": "string",
+            "default": "none",
+            "description": "This conditional parameter is useful for merchants in specific industries who need to submit one-time Merchant Initiated transactions in specific cases.\nNot all gateways support these methods, but will support a generic one-time Merchant Initiated transaction.\nOnly use this if the initiator value is \"merchant\". Otherwise, it will be ignored.\n  - Incremental: Send `incremental` with an additional purchase if the original authorization amount is not sufficient to cover the costs of your service or product. For example, if the customer adds goods or services or there are additional expenses.\n  - No Show: Send `no_show` if you charge customers a fee due to an agreed-upon cancellation policy in your industry.\n  - Resubmission: Send `resubmission` if you need to attempt collection on a declined transaction. You may also use the force collection behavior which has the same effect.\n  - Service Extension: Send `service_extension` if you are in a service industry and the customer has increased/extended their service in some way. For example: adding a day onto a car rental agreement.\n  - Split Shipment: Send `split_shipment` if you sell physical product and need to split up a shipment into multiple transactions when the customer is no longer in session.\n  - Top Up: Send `top_up` if you process one-time transactions based on a pre-arranged agreement with your customer where there is a pre-arranged account balance that needs maintaining. For example, if the customer has agreed to maintain an account balance of 30.00 and their current balance is 20.00, the MIT amount would be at least 10.00 to meet that 30.00 threshold.\n",
+            "enum": [
+              "incremental",
+              "no_show",
+              "resubmission",
+              "service_extension",
+              "split_shipment",
+              "top_up"
+            ]
           },
           "voided_by_invoice": {
             "$ref": "#/components/schemas/InvoiceMini"
@@ -23377,6 +23663,16 @@
             "type": "string",
             "description": "The `billing_info_id` is the value that represents a specific billing info for an end customer. When `billing_info_id` is used to assign billing info to the subscription, all future billing events for the subscription will bill to the specified billing info. `billing_info_id` can ONLY be used for sites utilizing the Wallet feature."
           },
+          "business_entity_id": {
+            "type": "string",
+            "title": "Business Entity ID",
+            "description": "The `business_entity_id` is the value that represents a specific business entity for an end customer. When `business_entity_id` is used to assign a business entity to the subscription, all future billing events for the subscription will bill to the specified business entity. Available when the `Multiple Business Entities` feature is enabled. If both `business_entity_id` and `business_entity_code` are present, `business_entity_id` will be used."
+          },
+          "business_entity_code": {
+            "type": "string",
+            "title": "Business Entity Code",
+            "description": "The `business_entity_code` is the value that represents a specific business entity for an end customer. When `business_entity_code` is used to assign a business entity to the subscription, all future billing events for the subscription will bill to the specified business entity. Available when the `Multiple Business Entities` feature is enabled. If both `business_entity_id` and `business_entity_code` are present, `business_entity_id` will be used."
+          },
           "collection_method": {
             "title": "Collection method",
             "description": "Must be set to manual in order to preview a purchase for an Account that does not have payment information associated with the Billing Info.",
@@ -23414,6 +23710,23 @@
             "type": "string",
             "title": "Terms and conditions",
             "description": "Terms and conditions to be put on the purchase invoice."
+          },
+          "transaction": {
+            "type": "object",
+            "description": "(Transaction Data, Card on File) - Options for flagging transactions as Customer or Merchant Initiated Unscheduled.",
+            "allOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "indicator": {
+                    "$ref": "#/components/schemas/Transaction/properties/indicator"
+                  },
+                  "merchant_reason_code": {
+                    "$ref": "#/components/schemas/Transaction/properties/merchant_reason_code"
+                  }
+                }
+              }
+            ]
           },
           "customer_notes": {
             "type": "string",
@@ -23741,6 +24054,52 @@
           }
         }
       },
+      "ExternalChargeCreate": {
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "title": "Currency",
+            "description": "3-letter ISO 4217 currency code.",
+            "maxLength": 3
+          },
+          "unit_amount": {
+            "type": "string",
+            "format": "decimal"
+          },
+          "quantity": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "external_product_reference": {
+            "$ref": "#/components/schemas/ExternalProductReferenceCreate"
+          }
+        },
+        "required": [
+          "quantity",
+          "currency",
+          "unit_amount"
+        ]
+      },
+      "AccountExternalSubscription": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "account_code": {
+                "type": "string",
+                "description": "The account code of a new or existing account to be used when creating the external subscription.",
+                "maxLength": 50
+              }
+            },
+            "required": [
+              "account_code"
+            ]
+          }
+        ]
+      },
       "ExternalPaymentPhase": {
         "type": "object",
         "description": "Details of payments in the lifecycle of a subscription from an external resource that is not managed by the Recurly platform, e.g. App Store or Google Play Store.",
@@ -23953,11 +24312,7 @@
             "maxLength": 255
           },
           "external_connection_type": {
-            "type": "string",
-            "enum": [
-              "apple_app_store",
-              "google_play_store"
-            ]
+            "$ref": "#/components/schemas/ExternalProductReferenceConnectionType"
           }
         }
       },
@@ -24003,6 +24358,10 @@
           }
         ]
       },
+      "ExternalProductReferenceConnectionType": {
+        "type": "string",
+        "description": "Represents the connection type. One of the connection types of your enabled App Connectors"
+      },
       "ExternalAccountList": {
         "type": "object",
         "properties": {
@@ -24036,7 +24395,7 @@
           },
           "external_connection_type": {
             "type": "string",
-            "description": "Represents the connection type. `AppleAppStore` or `GooglePlayStore`"
+            "description": "Represents the connection type. One of the connection types of your enabled App Connectors"
           }
         },
         "required": [
@@ -24053,7 +24412,7 @@
           },
           "external_connection_type": {
             "type": "string",
-            "description": "Represents the connection type. `AppleAppStore` or `GooglePlayStore`"
+            "description": "Represents the connection type. One of the connection types of your enabled App Connectors"
           }
         }
       },
@@ -24075,7 +24434,7 @@
           },
           "external_connection_type": {
             "type": "string",
-            "description": "Represents the connection type. `AppleAppStore` or `GooglePlayStore`"
+            "description": "Represents the connection type. One of the connection types of your enabled App Connectors"
           },
           "created_at": {
             "type": "string",
@@ -24255,6 +24614,114 @@
           }
         }
       },
+      "ExternalSubscriptionBase": {
+        "type": "object",
+        "properties": {
+          "external_id": {
+            "type": "string",
+            "title": "External Id",
+            "description": "Id of the subscription in the external system, i.e. Apple App Store or Google Play Store."
+          },
+          "last_purchased": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Last purchased",
+            "description": "When a new billing event occurred on the external subscription in conjunction with a recent billing period, reactivation or upgrade/downgrade."
+          },
+          "auto_renew": {
+            "type": "boolean",
+            "title": "Auto-renew",
+            "description": "An indication of whether or not the external subscription will auto-renew at the expiration date.",
+            "default": false
+          },
+          "state": {
+            "type": "string",
+            "description": "External subscriptions can be active, canceled, expired, past_due, voided, revoked, or paused.",
+            "default": "active"
+          },
+          "app_identifier": {
+            "type": "string",
+            "title": "App identifier",
+            "description": "Identifier of the app that generated the external subscription."
+          },
+          "quantity": {
+            "type": "integer",
+            "title": "Quantity",
+            "description": "An indication of the quantity of a subscribed item's quantity.",
+            "default": 1,
+            "minimum": 0
+          },
+          "activated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Activated at",
+            "description": "When the external subscription was activated in the external platform."
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Expires at",
+            "description": "When the external subscription expires in the external platform."
+          },
+          "trial_started_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Trial started at",
+            "description": "When the external subscription trial period started in the external platform."
+          },
+          "trial_ends_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Trial ends at",
+            "description": "When the external subscription trial period ends in the external platform."
+          },
+          "imported": {
+            "type": "boolean",
+            "title": "Import",
+            "description": "An indication of whether or not the external subscription was being created by a historical data import.",
+            "default": false
+          }
+        }
+      },
+      "ExternalSubscriptionCreate": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "account": {
+                "$ref": "#/components/schemas/AccountExternalSubscription"
+              },
+              "external_product_reference": {
+                "$ref": "#/components/schemas/ExternalProductReferenceCreate"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/ExternalSubscriptionBase"
+          }
+        ],
+        "required": [
+          "external_id",
+          "quantity",
+          "activated_at",
+          "expires_at"
+        ]
+      },
+      "ExternalSubscriptionUpdate": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "external_product_reference": {
+                "$ref": "#/components/schemas/ExternalProductReferenceUpdate"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/ExternalSubscriptionBase"
+          }
+        ]
+      },
       "ExternalSubscriptionList": {
         "type": "object",
         "properties": {
@@ -24341,6 +24808,112 @@
             "description": "When the external invoice was updated in Recurly."
           }
         }
+      },
+      "ExternalPaymentPhaseBase": {
+        "type": "object",
+        "properties": {
+          "started_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Started At"
+          },
+          "ends_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Ends At"
+          },
+          "starting_billing_period_index": {
+            "type": "integer",
+            "title": "Starting Billing Period Index"
+          },
+          "ending_billing_period_index": {
+            "type": "integer",
+            "title": "Ending Billing Period Index"
+          },
+          "offer_type": {
+            "type": "string",
+            "title": "Offer Type",
+            "description": "Type of discount offer given, e.g. \"FREE_TRIAL\""
+          },
+          "offer_name": {
+            "type": "string",
+            "title": "Offer Name",
+            "description": "Name of the discount offer given, e.g. \"introductory\""
+          },
+          "period_count": {
+            "type": "integer",
+            "title": "Period Count",
+            "description": "Number of billing periods"
+          },
+          "period_length": {
+            "type": "string",
+            "title": "Period Length",
+            "description": "Billing cycle length"
+          },
+          "amount": {
+            "type": "string",
+            "format": "decimal",
+            "title": "Amount",
+            "minimum": 0,
+            "description": "Allows up to 9 decimal places"
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency",
+            "description": "3-letter ISO 4217 currency code.",
+            "maxLength": 3
+          }
+        }
+      },
+      "ExternalInvoiceCreate": {
+        "type": "object",
+        "properties": {
+          "external_id": {
+            "type": "string",
+            "description": "An identifier which associates the external invoice to a corresponding object in an external platform."
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "paid"
+            ]
+          },
+          "total": {
+            "type": "string",
+            "format": "decimal"
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency",
+            "description": "3-letter ISO 4217 currency code.",
+            "maxLength": 3
+          },
+          "purchased_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the invoice was created in the external platform."
+          },
+          "line_items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExternalChargeCreate"
+            }
+          },
+          "external_payment_phase": {
+            "$ref": "#/components/schemas/ExternalPaymentPhaseBase"
+          },
+          "external_payment_phase_id": {
+            "type": "string",
+            "description": "External payment phase ID, e.g. `a34ypb2ef9w1`."
+          }
+        },
+        "required": [
+          "external_id",
+          "state",
+          "total",
+          "currency",
+          "purchased_at"
+        ]
       },
       "ExternalInvoiceList": {
         "type": "object",
@@ -24593,7 +25166,18 @@
           },
           "cc_bin_country": {
             "type": "string",
-            "description": "The 2-letter ISO 3166-1 alpha-2 country code associated with the credit card BIN, if known by Recurly. Available on the BillingInfo object only. Available when the BIN country lookup feature is enabled."
+            "description": "The 2-letter ISO 3166-1 alpha-2 country code associated with the card's issuer, if known."
+          },
+          "funding_source": {
+            "description": "The funding source of the card, if known.",
+            "type": "string",
+            "enum": [
+              "credit",
+              "debit",
+              "charge",
+              "prepaid",
+              "deferred_debit"
+            ]
           },
           "gateway_code": {
             "type": "string",
@@ -24778,6 +25362,35 @@
             "format": "date-time",
             "title": "Last updated at",
             "readOnly": true
+          }
+        }
+      },
+      "BusinessEntityMini": {
+        "type": "object",
+        "description": "Business entity details",
+        "properties": {
+          "id": {
+            "title": "Business entity ID",
+            "type": "string",
+            "maxLength": 13,
+            "readOnly": true
+          },
+          "object": {
+            "title": "Object type",
+            "type": "string",
+            "readOnly": true
+          },
+          "code": {
+            "title": "Business entity code",
+            "type": "string",
+            "maxLength": 50,
+            "description": "The entity code of the business entity."
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "This name describes your business entity and will appear on the invoice.",
+            "maxLength": 255
           }
         }
       },
