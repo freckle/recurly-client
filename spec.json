@@ -23711,23 +23711,6 @@
             "title": "Terms and conditions",
             "description": "Terms and conditions to be put on the purchase invoice."
           },
-          "transaction": {
-            "type": "object",
-            "description": "(Transaction Data, Card on File) - Options for flagging transactions as Customer or Merchant Initiated Unscheduled.",
-            "allOf": [
-              {
-                "type": "object",
-                "properties": {
-                  "indicator": {
-                    "$ref": "#/components/schemas/Transaction/properties/indicator"
-                  },
-                  "merchant_reason_code": {
-                    "$ref": "#/components/schemas/Transaction/properties/merchant_reason_code"
-                  }
-                }
-              }
-            ]
-          },
           "customer_notes": {
             "type": "string",
             "title": "Customer notes"
