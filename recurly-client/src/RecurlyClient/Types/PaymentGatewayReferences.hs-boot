@@ -1,0 +1,13 @@
+module RecurlyClient.Types.PaymentGatewayReferences where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data PaymentGatewayReferences
+instance Show PaymentGatewayReferences
+instance Eq PaymentGatewayReferences
+instance Data.Aeson.FromJSON PaymentGatewayReferences
+instance Data.Aeson.ToJSON PaymentGatewayReferences
+data PaymentGatewayReferencesReference_type
+instance Show PaymentGatewayReferencesReference_type
+instance Eq PaymentGatewayReferencesReference_type
+instance Data.Aeson.FromJSON PaymentGatewayReferencesReference_type
+instance Data.Aeson.ToJSON PaymentGatewayReferencesReference_type

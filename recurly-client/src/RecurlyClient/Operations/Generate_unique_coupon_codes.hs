@@ -111,7 +111,7 @@ data Generate_unique_coupon_codesResponse
       Generate_unique_coupon_codesResponseError GHC.Base.String
     | -- | A set of parameters that can be passed to the \`list_unique_coupon_codes\` endpoint to obtain only the newly generated \`UniqueCouponCodes\`.
       Generate_unique_coupon_codesResponse201 UniqueCouponCodeParams
-    | -- | Invalid or unpermitted parameter; perhaps you tried to generate more than 200 codes at a time?
+    | -- | Invalid or unpermitted parameter.
       Generate_unique_coupon_codesResponse400 Error
     | -- | Incorrect site or coupon ID.
       Generate_unique_coupon_codesResponse404 Error

@@ -32,6 +32,12 @@ import {-# SOURCE #-} RecurlyClient.Types.CustomField
 import qualified Prelude as GHC.Integer.Type
 import qualified Prelude as GHC.Maybe
 
+{- | Defines an alias for the schema located at @components.schemas.ExternalProductReferenceConnectionType@ in the specification.
+
+Represents the connection type. One of the connection types of your enabled App Connectors
+-}
+type ExternalProductReferenceConnectionType = Data.Text.Internal.Text
+
 {- | Defines an alias for the schema located at @components.schemas.CustomFields@ in the specification.
 
 The custom fields will only be altered when they are included in a request. Sending an empty array will not remove any existing values. To remove a field send the name with a null or empty value.

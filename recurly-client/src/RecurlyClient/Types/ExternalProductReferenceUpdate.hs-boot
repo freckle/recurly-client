@@ -1,0 +1,8 @@
+module RecurlyClient.Types.ExternalProductReferenceUpdate where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data ExternalProductReferenceUpdate
+instance Show ExternalProductReferenceUpdate
+instance Eq ExternalProductReferenceUpdate
+instance Data.Aeson.FromJSON ExternalProductReferenceUpdate
+instance Data.Aeson.ToJSON ExternalProductReferenceUpdate

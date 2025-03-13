@@ -1,0 +1,8 @@
+module RecurlyClient.Types.AccountExternalSubscription where
+import qualified Data.Aeson
+import qualified RecurlyClient.Common
+data AccountExternalSubscription
+instance Show AccountExternalSubscription
+instance Eq AccountExternalSubscription
+instance Data.Aeson.FromJSON AccountExternalSubscription
+instance Data.Aeson.ToJSON AccountExternalSubscription

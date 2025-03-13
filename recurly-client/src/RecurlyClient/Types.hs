@@ -11,6 +11,7 @@ module RecurlyClient.Types (
     module RecurlyClient.Types.AccountBalance,
     module RecurlyClient.Types.AccountBalanceAmount,
     module RecurlyClient.Types.AccountCreate,
+    module RecurlyClient.Types.AccountExternalSubscription,
     module RecurlyClient.Types.AccountList,
     module RecurlyClient.Types.AccountMini,
     module RecurlyClient.Types.AccountNote,
@@ -35,6 +36,7 @@ module RecurlyClient.Types (
     module RecurlyClient.Types.BillingInfoVerifyCVV,
     module RecurlyClient.Types.BusinessEntity,
     module RecurlyClient.Types.BusinessEntityList,
+    module RecurlyClient.Types.BusinessEntityMini,
     module RecurlyClient.Types.Coupon,
     module RecurlyClient.Types.CouponBulkCreate,
     module RecurlyClient.Types.CouponCreate,
@@ -83,9 +85,13 @@ module RecurlyClient.Types (
     module RecurlyClient.Types.ExternalProductReferenceCollection,
     module RecurlyClient.Types.ExternalProductReferenceCreate,
     module RecurlyClient.Types.ExternalProductReferenceMini,
+    module RecurlyClient.Types.ExternalProductReferenceUpdate,
     module RecurlyClient.Types.ExternalProductUpdate,
     module RecurlyClient.Types.ExternalSubscription,
+    module RecurlyClient.Types.ExternalSubscriptionBase,
+    module RecurlyClient.Types.ExternalSubscriptionCreate,
     module RecurlyClient.Types.ExternalSubscriptionList,
+    module RecurlyClient.Types.ExternalSubscriptionUpdate,
     module RecurlyClient.Types.ExternalTransaction,
     module RecurlyClient.Types.FraudRiskRule,
     module RecurlyClient.Types.GeneralLedgerAccount,
@@ -123,6 +129,7 @@ module RecurlyClient.Types (
     module RecurlyClient.Types.MeasuredUnitCreate,
     module RecurlyClient.Types.MeasuredUnitList,
     module RecurlyClient.Types.MeasuredUnitUpdate,
+    module RecurlyClient.Types.PaymentGatewayReferences,
     module RecurlyClient.Types.PaymentMethod,
     module RecurlyClient.Types.PercentageTier,
     module RecurlyClient.Types.PercentageTiersByCurrency,
@@ -201,6 +208,7 @@ import RecurlyClient.Types.AccountAcquisitionUpdate
 import RecurlyClient.Types.AccountBalance
 import RecurlyClient.Types.AccountBalanceAmount
 import RecurlyClient.Types.AccountCreate
+import RecurlyClient.Types.AccountExternalSubscription
 import RecurlyClient.Types.AccountList
 import RecurlyClient.Types.AccountMini
 import RecurlyClient.Types.AccountNote
@@ -225,6 +233,7 @@ import RecurlyClient.Types.BillingInfoVerify
 import RecurlyClient.Types.BillingInfoVerifyCVV
 import RecurlyClient.Types.BusinessEntity
 import RecurlyClient.Types.BusinessEntityList
+import RecurlyClient.Types.BusinessEntityMini
 import RecurlyClient.Types.Coupon
 import RecurlyClient.Types.CouponBulkCreate
 import RecurlyClient.Types.CouponCreate
@@ -273,9 +282,13 @@ import RecurlyClient.Types.ExternalProductReferenceBase
 import RecurlyClient.Types.ExternalProductReferenceCollection
 import RecurlyClient.Types.ExternalProductReferenceCreate
 import RecurlyClient.Types.ExternalProductReferenceMini
+import RecurlyClient.Types.ExternalProductReferenceUpdate
 import RecurlyClient.Types.ExternalProductUpdate
 import RecurlyClient.Types.ExternalSubscription
+import RecurlyClient.Types.ExternalSubscriptionBase
+import RecurlyClient.Types.ExternalSubscriptionCreate
 import RecurlyClient.Types.ExternalSubscriptionList
+import RecurlyClient.Types.ExternalSubscriptionUpdate
 import RecurlyClient.Types.ExternalTransaction
 import RecurlyClient.Types.FraudRiskRule
 import RecurlyClient.Types.GeneralLedgerAccount
@@ -313,6 +326,7 @@ import RecurlyClient.Types.MeasuredUnit
 import RecurlyClient.Types.MeasuredUnitCreate
 import RecurlyClient.Types.MeasuredUnitList
 import RecurlyClient.Types.MeasuredUnitUpdate
+import RecurlyClient.Types.PaymentGatewayReferences
 import RecurlyClient.Types.PaymentMethod
 import RecurlyClient.Types.PercentageTier
 import RecurlyClient.Types.PercentageTiersByCurrency

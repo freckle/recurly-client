@@ -35,8 +35,8 @@ import qualified Prelude as GHC.Maybe
 
 -- | Defines the object schema located at @components.schemas.ExternalProductReferenceCreate.allOf@ in the specification.
 data ExternalProductReferenceCreate = ExternalProductReferenceCreate
-    { externalProductReferenceCreateExternal_connection_type :: (GHC.Maybe.Maybe ExternalProductReferenceCreateExternal_connection_type)
-    -- ^ external_connection_type
+    { externalProductReferenceCreateExternal_connection_type :: (GHC.Maybe.Maybe ExternalProductReferenceConnectionType)
+    -- ^ external_connection_type: Represents the connection type. One of the connection types of your enabled App Connectors
     , externalProductReferenceCreateReference_code :: (GHC.Maybe.Maybe Data.Text.Internal.Text)
     -- ^ reference_code: A code which associates the external product to a corresponding object or resource in an external platform like the Apple App Store or Google Play Store.
     --
@@ -62,29 +62,3 @@ mkExternalProductReferenceCreate =
         { externalProductReferenceCreateExternal_connection_type = GHC.Maybe.Nothing
         , externalProductReferenceCreateReference_code = GHC.Maybe.Nothing
         }
-
--- | Defines the enum schema located at @components.schemas.ExternalProductReferenceCreate.allOf.properties.external_connection_type@ in the specification.
-data ExternalProductReferenceCreateExternal_connection_type
-    = -- | This case is used if the value encountered during decoding does not match any of the provided cases in the specification.
-      ExternalProductReferenceCreateExternal_connection_typeOther Data.Aeson.Types.Internal.Value
-    | -- | This constructor can be used to send values to the server which are not present in the specification yet.
-      ExternalProductReferenceCreateExternal_connection_typeTyped Data.Text.Internal.Text
-    | -- | Represents the JSON value @"apple_app_store"@
-      ExternalProductReferenceCreateExternal_connection_typeEnumApple_app_store
-    | -- | Represents the JSON value @"google_play_store"@
-      ExternalProductReferenceCreateExternal_connection_typeEnumGoogle_play_store
-    deriving (GHC.Show.Show, GHC.Classes.Eq)
-
-instance Data.Aeson.Types.ToJSON.ToJSON ExternalProductReferenceCreateExternal_connection_type where
-    toJSON (ExternalProductReferenceCreateExternal_connection_typeOther val) = val
-    toJSON (ExternalProductReferenceCreateExternal_connection_typeTyped val) = Data.Aeson.Types.ToJSON.toJSON val
-    toJSON (ExternalProductReferenceCreateExternal_connection_typeEnumApple_app_store) = "apple_app_store"
-    toJSON (ExternalProductReferenceCreateExternal_connection_typeEnumGoogle_play_store) = "google_play_store"
-instance Data.Aeson.Types.FromJSON.FromJSON ExternalProductReferenceCreateExternal_connection_type where
-    parseJSON val =
-        GHC.Base.pure
-            ( if
-                | val GHC.Classes.== "apple_app_store" -> ExternalProductReferenceCreateExternal_connection_typeEnumApple_app_store
-                | val GHC.Classes.== "google_play_store" -> ExternalProductReferenceCreateExternal_connection_typeEnumGoogle_play_store
-                | GHC.Base.otherwise -> ExternalProductReferenceCreateExternal_connection_typeOther val
-            )

@@ -35,11 +35,10 @@ import qualified Prelude as GHC.Maybe
 -- | Defines the object schema located at @components.schemas.CouponBulkCreate@ in the specification.
 data CouponBulkCreate = CouponBulkCreate
     { couponBulkCreateNumber_of_unique_codes :: (GHC.Maybe.Maybe GHC.Types.Int)
-    -- ^ number_of_unique_codes: The quantity of unique coupon codes to generate
+    -- ^ number_of_unique_codes: The quantity of unique coupon codes to generate. A bulk coupon can have up to 100,000 unique codes (or your site\'s configured limit).
     --
     -- Constraints:
     --
-    -- * Maxium  of 200.0
     -- * Minimum  of 1.0
     }
     deriving

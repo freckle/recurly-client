@@ -39,7 +39,7 @@ data ExternalAccount = ExternalAccount
     , externalAccountExternal_account_code :: (GHC.Maybe.Maybe Data.Text.Internal.Text)
     -- ^ external_account_code: Represents the account code for the external account.
     , externalAccountExternal_connection_type :: (GHC.Maybe.Maybe Data.Text.Internal.Text)
-    -- ^ external_connection_type: Represents the connection type. \`AppleAppStore\` or \`GooglePlayStore\`
+    -- ^ external_connection_type: Represents the connection type. One of the connection types of your enabled App Connectors
     , externalAccountId :: (GHC.Maybe.Maybe Data.Text.Internal.Text)
     -- ^ id: UUID of the external_account .
     , externalAccountObject :: (GHC.Maybe.Maybe Data.Text.Internal.Text)
