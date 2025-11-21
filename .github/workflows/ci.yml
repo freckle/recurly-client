@@ -13,7 +13,7 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - id: generate
         uses: freckle/stack-action/generate-matrix@v5
     outputs:
@@ -29,7 +29,7 @@ jobs:
       fail-fast: false
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - id: stack
         uses: freckle/stack-action@v5
         with:
@@ -40,6 +40,6 @@ jobs:
   cabal-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - run: cabal check --ignore=missing-upper-bounds
         working-directory: recurly-client
