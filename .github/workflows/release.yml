@@ -16,7 +16,7 @@ jobs:
       tag: ${{ steps.tag.outputs.tag }}
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - id: tag
         name: Tag
@@ -50,7 +50,7 @@ jobs:
       HACKAGE_KEY: ${{ secrets.HACKAGE_UPLOAD_API_KEY }}
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: "Build with Haddocks"
         uses: freckle/stack-action@v5
